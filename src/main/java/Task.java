@@ -101,7 +101,7 @@ public class Task{
 
     public Instant getStart(){ return this.begin;}
     public Instant getEnd(){return this.end;}
-    public int compare(Task task){
+    public int compareTo(Task task){
         return this.begin.compareTo(task.begin);
     }
 }
