@@ -1,5 +1,3 @@
-package java;
-
 import java.util.ArrayList;
 
 public class TaskTracker {
@@ -7,19 +5,20 @@ public class TaskTracker {
 
     //constructor
     public TaskTracker() {
+        this.listOfTask = new ArrayList<Task>();
 
     }
 
-    public void addTask(){
-
+    public void addTask(Task task){
+        this.listOfTask.add(task);
     }
 
-    public void deleteTask(){
-
+    public void deleteTask(Task task){
+        this.listOfTask.remove(task);
     }
 
-    public void editTask(){
-
+    public void editTask(Task task, char ACTION){
+        //to be implemented
     }
 
     // access some method in TimeLine to add tasks that are recurring or already have time in to timeline

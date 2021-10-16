@@ -1,7 +1,5 @@
-package java;
-
+import java.time.*;
 import java.util.ArrayList;
-
 public class Task{
     private String name;
     private String priority;
@@ -11,17 +9,30 @@ public class Task{
     private boolean finished;
     private boolean recurring;
     private boolean allDay;
+    private Instant begin;
+    private Instant end;
 
-    public Task(String name, String priority, String description, boolean recurring, boolean allDay) {
+
+    public Task(String name, String priority, String description) {
         this.name = name;
         this.priority = priority;
         this.description = description;
-        this.recurring = recurring;
-        this.allDay = allDay;
 
         this.evaluation = "";
-        this.subTasks = new ArrayList<>();
+        //this.subTasks = new ArrayList<>();
         this.finished = false;
+    }
+    public Task(Instant begin, Instant end, String name){
+        this.name = name;
+        this.begin = begin;
+        this.end = end;
+
+    }
+    public Task(Instant begin, Instant end){
+        this.name = "Un-named Task";
+        this.begin = begin;
+        this.end = end;
+
     }
 
     public String getName() {
@@ -86,5 +97,11 @@ public class Task{
 
     public void setAllDay(boolean allDay) {
         this.allDay = allDay;
+    }
+
+    public Instant getStart(){ return this.begin;}
+    public Instant getEnd(){return this.end;}
+    public int compare(Task task){
+        return this.begin.compareTo(task.begin);
     }
 }

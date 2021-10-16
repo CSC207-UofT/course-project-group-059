@@ -1,5 +1,3 @@
-package java;
-
 public class SubTask {
     private String description;
     private boolean finished;
