@@ -16,7 +16,8 @@ We occasionally needed to separate the responsibilities of one class into a new 
 Our walkthrough deals with the simple scenario of adding a scheduled, hour-long task. In order to accommodate this scenario in our code, we created a simple implementation of the classes and methods necessary for a user to run the scenario in the main method.
 
 ## Open Questions
-Incomplete
+- How to save and load tasks when the program is closed and reopened
+- Which date/time package is the best to use
 
 ## Successes
 Incomplete
