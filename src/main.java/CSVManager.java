@@ -4,7 +4,7 @@ import java.nio.file.Paths;
 import java.time.Instant;
 import java.util.Scanner;*/
 
-public class CSVM {
+public class CSVManager {
     private void read(){}
     public static void save(Task t){
         try {

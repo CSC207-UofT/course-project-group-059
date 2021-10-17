@@ -20,7 +20,24 @@ Our walkthrough deals with the simple scenario of adding a scheduled, hour-long 
 - Which date/time package is the best to use
 
 ## Successes
-Incomplete
+- Our CRC model has not needed many changes as the implementation has worked
+- Very few conflicts with merging, any conflicts are resolved quickly
 
-## Contributions
-Incomplete
+## Contributions and Plans
+Robby
+- Leading group meetings
+- Initial CRC model and code implementation
+- Planning to ___
+
+Bamdad
+- Initial CRC model and code implementation
+- Planning to ___
+
+Max
+- Specification, walk-through, and progress report
+- Refactoring code
+- Planning to ___
+
+Jacky/Jimmy
+- Final CRC model
+- Planning to ___
