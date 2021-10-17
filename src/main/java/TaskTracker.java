@@ -22,9 +22,12 @@ public class TaskTracker {
     }
 
     // access some method in TimeLine to add tasks that are recurring or already have time in to timeline
-    public void AddToTime(){
+    public void AddToTime(Task t){
+
+
 
     }
+    public static void createTask(){return;}
 
     @Override
     public String toString() {

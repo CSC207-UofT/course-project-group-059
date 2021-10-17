@@ -1,42 +1,38 @@
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Date;
 import java.util.HashMap;
 import java.time.*;
 
 public class Timeline {
-    private HashMap<Date, ArrayList<Task>> timeline;
+    public static HashMap<Instant, Task> timeline;
 
     //constructor
-    public Timeline(){
-        this.timeline =  new HashMap<Date, ArrayList<Task>>();
+    public Timeline() {
+        //record the days events, task will eventually be changed to list of tasks, some multi index structure will be preferred
+        this.timeline = new HashMap<Instant, Task>();
+//        Task t = new Task(Instant.now(),Instant.now(),"");
+//        this.addTask(t);
 
     }
 
-//    public Duration checkOverlap(Task task1, Task){
-//
-//
-//    }
+    public Duration checkOverlap(Task task1, Task task2) {
+        return
+                Duration.between(task1.getStart(), task2.getStart()).
+                        minus(Duration.between(task1.getEnd(), task2.getEnd()));
+    }
 
-    public void changeTaskTime(){
+    public void changeTaskTime() {
 
+    }
+
+    public void addTask(Task t) {
+        this.timeline.put(t.getStart(), t);
     }
 
     @Override
     public String toString() {
-        return "";
-    }
-    public static void main(String[] args) {
-        String[] s = "a,ab,n".split(",");
-        for(String i : s){
-            System.out.println(i+s[0]);
+        //return the days events in order
+        for (Instant i : this.timeline.keySet()) {
+            return this.timeline.get(i).toString();
         }
-        Task t = new Task(s[0],s[1],s[2]);
-        System.out.println(t.getStart());
-        Date d = new Date(2021,12,20,10,10);
-        Instant c = d.toInstant();
-        System.out.println(d);
-        System.out.println(c);
-
+        return null;
     }
 }

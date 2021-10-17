@@ -17,7 +17,9 @@ public class UserFunctions {
     public static String checkTimeLine(){
         return "Your time-line is empty so far";
     }
+
     public static void manageTask(){
+        Timeline H = new Timeline();
         Scanner reader = new Scanner(System.in);
         Integer i = 1;
         while (i.equals(1)) {
@@ -27,17 +29,23 @@ public class UserFunctions {
             if (n.equalsIgnoreCase("A")) {
                 System.out.println("Taking Task(yyyy,mm,dd,hh,mm:yyyy,mm,dd,hh,mm)");
                 String[] s = reader.next().split(",");
+
                 int[] num = Arrays.stream(s).mapToInt(Integer::parseInt).toArray();
+                System.out.println("Taking name");
+                String name = reader.next();
 
                 Task t = new Task(new Date(num[0],num[1],num[2],num[3],num[4]).toInstant(),
                         new Date(num[5],num[6],num[7],num[8],num[9]).toInstant(),
-                        s[s.length-1]);
+                        name);
+
                 CSVM.save(t);
+                H.addTask(t);
                 System.out.println("took task");
 
             }
 
-            if (n.equalsIgnoreCase("T")) { return;}
+            if (n.equalsIgnoreCase("T")) {
+                System.out.println(H.toString());}
             if (n.equalsIgnoreCase("D")) {
                 System.out.println(CSVM.todo());
             }
