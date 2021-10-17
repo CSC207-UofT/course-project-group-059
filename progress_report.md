@@ -18,6 +18,8 @@ Our walkthrough deals with the simple scenario of adding a scheduled, hour-long 
 ## Open Questions
 - How to save and load tasks when the program is closed and reopened
 - Which date/time package is the best to use
+- How to package/group the project
+- How to further adhere to principles of clean architecture
 
 ## Successes
 - Our CRC model has not needed many changes as the implementation has worked
@@ -27,17 +29,16 @@ Our walkthrough deals with the simple scenario of adding a scheduled, hour-long 
 Robby
 - Leading group meetings
 - Initial CRC model and code implementation
-- Planning to ___
+- Planning to implement more code
 
 Bamdad
 - Initial CRC model and code implementation
-- Planning to ___
+- Planning to implement more code
 
 Max
-- Specification, walk-through, and progress report
-- Refactoring code
-- Planning to ___
+- Specification, walk-through, progress report, and refactoring code
+- Planning to ensure no violation of Clean Architecture and code
 
-Jacky/Jimmy
-- Final CRC model
-- Planning to ___
+Jacky
+- Final CRC model and progress report
+- Planning to revise code
