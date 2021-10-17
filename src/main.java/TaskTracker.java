@@ -3,16 +3,16 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 
 public class TaskTracker {
-    private static ArrayList<Task> listOfTask;
+    private static ArrayList<Task> listOfTasks;
 
     //constructor
     public TaskTracker() {
-        listOfTask = new ArrayList<>();
+        listOfTasks = new ArrayList<>();
     }
 
     public void addTask(Task task){
-        listOfTask.add(task);
-        System.out.println("You added the following task: \n" + task);
+        listOfTasks.add(task);
+        System.out.println(this);
     }
 
     // create and add Task into list
@@ -58,7 +58,7 @@ public class TaskTracker {
     @Override
     public String toString() {
         StringBuilder output = new StringBuilder("Your Task list:");
-        for(Task task: listOfTask){
+        for(Task task: listOfTasks){
             output.append("\n");
             output.append(task.toString());
         }
