@@ -34,7 +34,7 @@ public class TimeRange extends Time {
     public String toString() {
         return "TimeRange{" +
                 "startTime=" + startTime +
-                ", enTime=" + enTime +
+                ", endTime=" + enTime +
                 '}';
     }
 }
