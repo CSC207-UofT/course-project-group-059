@@ -24,7 +24,7 @@ public class UserFunctions{
         }
     }
 
-    // ask user what to do, and access the corresponding method in Task tracker
+    // ask user what to do, and access the corresponding method in abstractClasses.Task tracker
     public static void manageTask(Timeline timeline, TaskTracker tracker){
         String msg = "\nA to create and add a task" +
                      "\nENTER to exit";

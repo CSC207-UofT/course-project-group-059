@@ -1,3 +1,5 @@
+import abstractClasses.Task;
+
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.time.*;
@@ -11,7 +13,7 @@ public class Timeline {
     public Timeline(){
         timeline = new LinkedHashMap<>();
 
-        // ArrayList<Task> taskList = new ArrayList<>();
+        // ArrayList<abstractClasses.Task> taskList = new ArrayList<>();
 
         // Add a key for each hour, mapped to empty lists
         for (int i = 0; i < 24; i++) {
@@ -23,13 +25,13 @@ public class Timeline {
     }
 
     // Return true if there are two tasks in the same time block and there time are overlapping
-//    public static boolean checkOverlap(Task task1,  Task task2){
+//    public static boolean checkOverlap(abstractClasses.Task task1,  abstractClasses.Task task2){
 //
 //    }
 
 
 
-    /*public boolean addTaskToTimeLine(Task task){
+    /*public boolean addTaskToTimeLine(abstractClasses.Task task){
 
         for(LocalTime time : this.timeline.keySet()) {
 
@@ -61,13 +63,13 @@ public class Timeline {
 
 
     // change time of task only
-    public static void changeTaskTime(Task task, LocalTime startTime, LocalTime endTime){
+    public static void changeTaskTime(abstractClasses.Task task, LocalTime startTime, LocalTime endTime){
         task.setStartTime(startTime);
         task.setEndTime(startTime);
     }
 
     // change date the time of the task, which will affect the timeline
-    public static void changeTaskTime(Task task, LocalDate startDate, LocalTime startTime, LocalDate endDate, LocalTime endTime){
+    public static void changeTaskTime(abstractClasses.Task task, LocalDate startDate, LocalTime startTime, LocalDate endDate, LocalTime endTime){
         task.setStartDate(startDate);
         task.setEndDate(endDate);
         task.setStartTime(startTime);

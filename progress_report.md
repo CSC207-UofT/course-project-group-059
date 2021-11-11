@@ -5,7 +5,7 @@ Our chosen domain was a productivity application that would combine the features
 
 ## CRC Model
 Our CRC cards were written to explore this concept more in-depth, naming each class that is likely necessary to code the features from our specification. We used the principles of clean architecture to organize our classes into 4 groups:
-1. Entities: Task, SubTask, AlarmClock
+1. Entities: abstractClasses.Task, SubTask, AlarmClock
 2. Use Cases: TaskTracker, Suggestor, Timeline
 3. Adapters: CSVWriter, Pomodoro
 4. Interface: UserFunctions
@@ -16,7 +16,7 @@ We occasionally needed to separate the responsibilities of one class into a new 
 Our walkthrough deals with the simple scenario of adding a scheduled, hour-long task. In order to accommodate this scenario in our code, we created a simple implementation of the classes and methods necessary for a user to run the scenario in the main method.
 
 ## Open Questions
-- How to save and load tasks when the program is closed and reopened
+- How to save and load taskEntities when the program is closed and reopened
 - Which date/time package is the best to use
 - How to package/group the project
 - How to further adhere to principles of clean architecture
