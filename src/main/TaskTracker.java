@@ -1,11 +1,13 @@
 import abstractClasses.Task;
+import interfaces.EditStrategy;
 import interfaces.TaskObserver;
+import taskEntities.SubTask;
 
 import java.util.*;
 
 public class TaskTracker {
 
-//Task Tracker will implement Observer design pattern
+//Task Tracker implements Observer design pattern
     private final List<TaskObserver> observerList = new ArrayList<>();
 
     private final TaskList taskList;
@@ -51,7 +53,19 @@ public class TaskTracker {
     }
 
 
-//TODO edit Task
+// deal with one task
+    public void editTask(Task task, EditStrategy strategy){
+        strategy.edit(task);
+        refreshObserver(task);
+    }
+
+    public void addSubTask(Task task, SubTask subTask){
+        task.getSubTasks().add(subTask);
+    }
+
+    public void deleteSubTask(Task task, SubTask subTask){
+        task.getSubTasks().remove(subTask);
+    }
 
 
 }
