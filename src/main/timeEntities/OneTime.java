@@ -9,10 +9,11 @@ public class OneTime extends Time {
         super(time);
     }
 
+
     @Override
     public String toString() {
         return "OneTime{" +
-                "time=" + time +
+                "time=" + endTime +
                 '}';
     }
 }

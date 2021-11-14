@@ -1,7 +1,6 @@
 import abstractClasses.Task;
-import interfaces.EditStrategy;
 import interfaces.TaskObserver;
-import taskEntities.SubTask;
+import taskEntities.TaskList;
 
 import java.util.*;
 
@@ -14,8 +13,8 @@ public class TaskTracker {
 
 
     //Constructor
-    public TaskTracker(TaskList taskList, TaskObserver... observers) {
-        this.taskList = taskList;
+    public TaskTracker(TaskList tasklist, TaskObserver... observers) {
+        this.taskList = tasklist;
         Collections.addAll(observerList, observers);
     }
 
@@ -33,9 +32,15 @@ public class TaskTracker {
     }
 
     // auto update to the observer
-    private void refreshObserver(Task task){
+    private void simpleRefreshObserver(Task task){
         for(TaskObserver observer: observerList){
             observer.simpleRefresh(task);
+        }
+    }
+
+    private void refreshObserver(){
+        for(TaskObserver observer: observerList){
+            observer.refresh(taskList);
         }
     }
 
@@ -44,28 +49,14 @@ public class TaskTracker {
 
     public void addTask(Task task){
         taskList.getTaskList().add(task);
-        refreshObserver(task);
+        simpleRefreshObserver(task);
     }
 
     public void deleteTask(Task task){
         taskList.getTaskList().remove(task);
-        refreshObserver(task);
+        simpleRefreshObserver(task);
     }
 
-
-// deal with one task
-    public void editTask(Task task, EditStrategy strategy){
-        strategy.edit(task);
-        refreshObserver(task);
-    }
-
-    public void addSubTask(Task task, SubTask subTask){
-        task.getSubTasks().add(subTask);
-    }
-
-    public void deleteSubTask(Task task, SubTask subTask){
-        task.getSubTasks().remove(subTask);
-    }
 
 
 }

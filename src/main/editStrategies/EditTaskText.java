@@ -3,7 +3,7 @@ package editStrategies;
 import abstractClasses.Task;
 import abstractClasses.Text;
 import interfaces.EditStrategy;
-import taskEntities.Attributes.*;
+import taskAttributes.*;
 
 public class EditTaskText implements EditStrategy {
 

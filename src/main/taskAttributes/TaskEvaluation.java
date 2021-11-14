@@ -1,4 +1,4 @@
-package taskEntities.Attributes;
+package taskAttributes;
 
 
 import abstractClasses.Text;

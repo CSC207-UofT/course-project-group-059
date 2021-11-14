@@ -1,6 +1,6 @@
 package abstractClasses;
 
-import taskEntities.Attributes.*;
+import taskAttributes.*;
 import timeEntities.TimeToRemind;
 
 import java.util.ArrayList;
@@ -21,11 +21,10 @@ public abstract class Task{
 
     protected TimeToRemind remind;
 
-    // The booleans are all false at default
-    // Maybe not going to make contractors that deal with these bool.
-    protected Finished finished;
-    protected Recurring recurring;
-    protected AllDay allDay;
+    // The status are all false at default
+    protected Finished finished = new Finished();
+    protected Recurring recurring = new Recurring();
+    protected AllDay allDay = new AllDay();
 
     public Task(){
         // Empty task
@@ -109,9 +108,9 @@ public abstract class Task{
                 ", date=" + date +
                 ", time=" + time +
                 ", remind=" + remind +
-                ", finished=" + finished.value +
-                ", recurring=" + recurring.value +
-                ", allDay=" + allDay.value +
+                ", finished=" + finished.getValue() +
+                ", recurring=" + recurring.getValue() +
+                ", allDay=" + allDay.getValue() +
                 '}';
     }
 }
