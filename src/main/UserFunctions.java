@@ -24,7 +24,7 @@ public class UserFunctions{
         }
     }
 
-    // ask user what to do, and access the corresponding method in Task tracker
+    // ask user what to do, and access the corresponding method in abstractClasses.Task tracker
     public static void manageTask(Timeline timeline, TaskTracker tracker){
         String msg = "\nA to create and add a task" +
                      "\nENTER to exit";
@@ -86,8 +86,8 @@ public class UserFunctions{
         String endDate = reader.nextLine();
         System.out.println("Please input the end time of the task (HH:mm)");
         String endTime = reader.nextLine();
-        tracker.createTask(name,priority,description, LocalDate.parse(startDate), LocalTime.parse(startTime),
-                LocalDate.parse(endDate),LocalTime.parse(endTime));
+//        tracker.createTask(name,priority,description, LocalDate.parse(startDate), LocalTime.parse(startTime),
+//                LocalDate.parse(endDate),LocalTime.parse(endTime));
     }
 
 }
