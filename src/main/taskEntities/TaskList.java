@@ -30,6 +30,7 @@ public class TaskList implements Storable {
         else {
             for (Task task: getTaskList()) {
                 output.append(task);
+                output.append("\n");
             }
         }
 
