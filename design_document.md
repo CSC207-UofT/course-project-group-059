@@ -30,7 +30,7 @@ For our project, we made use of the Strategy and Observer Design Patterns. The i
 The process of adding an implementation or change to the repository typically involved members working on their individual branches and submitting pull requests. Another member would merge the branch after scanning through the changes, though we would occasionally just commit to the main branch if other members were inactive. We have not yet made use of issues or actions in GitHub, but we planned and split up our tasks using Trello.
 
 ## Code Style and Documentation
-Our code is sparsely documented at the moment, but we plan to add further documentation once the implementation is more finalized. All IntelliJ warnings are resolved apart from one. A particular warning pops up when using string concatenation: “Concatenation can be replaced with text block.” However, this warning cannot be resolved, as replacing the string with a text block does not allow the program to run due to syntax errors.
+Our code is sparsely documented at the moment, but we plan to add further documentation once the implementation is more finalized. Most IntelliJ warnings are resolved unless commenting out unused code results in another warning. However, a specific unsolved warning pops up when using string concatenation: “Concatenation can be replaced with text block.” This warning cannot be resolved, as replacing the string with a text block does not allow the program to run due to syntax errors.
 
 ## Testing
 Despite not testing all of our code due to time constraints, we did test the major components and our new features. We tested when a user wanted to change a Tasks name, description, date, time, and when it was a recurring task. Also tested was the implementation of the Observer design pattern.
@@ -74,6 +74,7 @@ Bamdad
 - Planning to write documentation and implement SuggestionList
 
 Max
+- Updating specification
 - Implementing printers
 - Writing design document
 - Planning to update UserFunctions and refactor/fix code smells
