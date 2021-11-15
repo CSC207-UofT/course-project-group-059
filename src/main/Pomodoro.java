@@ -4,8 +4,8 @@ public class Pomodoro {
 
     //constructor
     public Pomodoro() {
-        this.pomodoroCount = 0;
-        startWorkAlarm();
+        this.pomodoroCount = -1;
+        update();
     }
 
     //changes and resets pomodoro count when needed
@@ -30,20 +30,22 @@ public class Pomodoro {
     }
 
     //run this every minute
-    public void update() {
+    public String update() {
+        String message = "";
         if (this.alarm.sound()) {
             //pomodoro count - work: 0, 2, 4, 6, short break: 1, 3, 5, long break: 7
             updateCount();
 
             if (this.pomodoroCount%2 == 0) {
-                startWorkAlarm();
+                message = startWorkAlarm();
             }
             else if (this.pomodoroCount == 7) {
-                startRelaxAlarm(15); //take long break
+                message = startRelaxAlarm(15); //take long break
             }
             else {
-                startRelaxAlarm(5); //take short break
+                message = startRelaxAlarm(5); //take short break
             }
         }
+        return message;
     }
 }
