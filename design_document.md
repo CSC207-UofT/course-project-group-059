@@ -7,13 +7,17 @@ Our chosen domain was a productivity application that would combine the features
 - A to-do list
 - Adding a task with descriptions and times
 - Printing the timeline and to-do list
+
 The program runs in the command line. The user inputs a list of Tasks at the start of the day with time estimates for the length of each Task, optionally including descriptions, and due dates for each Task. The program then adds these Tasks to the Timeline and TaskList. At any point, the user can read out the Timeline or TaskList.
 Since Phase 0, we have improved the class structure and packaging of our code, for example with the implementation of new interfaces and abstract classes. However, our functionality has not significantly changed since then, and the implementation of multiple features is still pending as outlined in the Functionality section below.
 
 ## SOLID
 SRP: After Phase 0, more emphasis was placed on fulfilling the Single Responsibility Principle. For example, we split the Task class into types of Tasks and its attributes so that it doesn’t need to handle them all.
+
 OCP: We made more frequent use of abstract and interface classes to satisfy the Open/Closed Principle. Turning the original Task class into an abstract class allows us to add new types of Tasks without needing to repeatedly modify the Task class.
+
 LSP: We have not yet ensured that the Liskov Substitution Principle is fulfilled since our abstract classes and interfaces are still a work in progress. Our CRC model does seem to adhere to the LSP with the abstract classes we plan to implement, so they will likely fulfill it once they are implemented.
+
 DIP: The responsibility of the CSVManager class is shifted to an interface to avoid having Storable objects depend on it. Storable objects now depend on abstractions.
 
 ## Clean Architecture
