@@ -27,17 +27,17 @@ public class TaskTracker {
     }
 
     // deal with Observer list
-    public void addNewObservers(TaskObserver observer){
-        observerList.add(observer);
-    }
-
-    public void removeObserver(TaskObserver observer){
-        observerList.remove(observer);
-    }
-
-    public List<TaskObserver> getObserverList(){
-        return observerList;
-    }
+//    public void addNewObservers(TaskObserver observer){
+//        observerList.add(observer);
+//    }
+//
+//    public void removeObserver(TaskObserver observer){
+//        observerList.remove(observer);
+//    }
+//
+//    public List<TaskObserver> getObserverList(){
+//        return observerList;
+//    }
 
     // auto update to the observer
     private void simpleRefreshObserver(Task task){
@@ -48,11 +48,11 @@ public class TaskTracker {
         }
     }
 
-    private void refreshObserver(){
-        for(TaskObserver observer: observerList){
-            observer.refresh(taskList);
-        }
-    }
+//    private void refreshObserver(){
+//        for(TaskObserver observer: observerList){
+//            observer.refresh(taskList);
+//        }
+//    }
 
 
 // deal with taskList

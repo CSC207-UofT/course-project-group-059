@@ -25,27 +25,27 @@ public abstract class Date {
     }
 
 
-    public LocalDate getStartDate() {
-        if(this.startDate == null){
-
-            return this.endDate;
-        }
-        else return this.startDate;
-    }
-
-    public LocalDate getEndDate() {
-        return endDate;
-    }
-
-    public void setStartDate(LocalDate startDate) {
-
-        this.startDate = startDate;
-    }
-
-    public void setEndDate(LocalDate endDate) {
-        this.endDate = endDate;
-    }
-
+//    public LocalDate getStartDate() {
+//        if(this.startDate == null){
+//
+//            return this.endDate;
+//        }
+//        else return this.startDate;
+//    }
+//
+//    public LocalDate getEndDate() {
+//        return endDate;
+//    }
+//
+//    public void setStartDate(LocalDate startDate) {
+//
+//        this.startDate = startDate;
+//    }
+//
+//    public void setEndDate(LocalDate endDate) {
+//        this.endDate = endDate;
+//    }
+//
     public boolean isStartAndEndToday(){
         return true;
     }

@@ -12,9 +12,9 @@ public abstract class Status {
         this.value = value;
     }
 
-    public void update(boolean newValue){
-        this.value = newValue;
-    }
+//    public void update(boolean newValue){
+//        this.value = newValue;
+//    }
 
     public void update(Status newStatus){this.value = newStatus.getValue();}
 

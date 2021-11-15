@@ -6,7 +6,7 @@ import interfaces.EditStrategy;
 import taskAttributes.*;
 
 public class EditTaskStatus implements EditStrategy {
-    private Status newStat;
+    private final Status newStat;
 
     public EditTaskStatus(Status newStat) {
         this.newStat = newStat;

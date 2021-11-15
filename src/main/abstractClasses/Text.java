@@ -12,9 +12,9 @@ public abstract class Text {
         else this.value = value;
     }
 
-    public void update(String newValue){
-        this.value = newValue;
-    }
+//    public void update(String newValue){
+//        this.value = newValue;
+//    }
 
     public void update(Text text){this.value = text.toString(); }
 
