@@ -4,8 +4,8 @@ public class Pomodoro {
 
     //constructor
     public Pomodoro() {
-        this.pomodoroCount = -1;
-        update();
+        this.pomodoroCount = 0;
+        startWorkAlarm();
     }
 
     //changes and resets pomodoro count when needed
@@ -13,7 +13,7 @@ public class Pomodoro {
         this.pomodoroCount++;
 
         if (pomodoroCount > 7) { //reset count
-            this.pomodoroCount = -1;
+            this.pomodoroCount = 0;
         }
     }
 

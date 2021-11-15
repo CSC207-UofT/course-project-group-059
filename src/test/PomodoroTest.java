@@ -1,13 +1,12 @@
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.Assert.*;
 
-class PomodoroTest {
+public class PomodoroTest {
     Pomodoro p = new Pomodoro();
 
     @Test
-    void updateTest() {
-        String expected;
+    public void updateTest() {
         for (int k = 0; k < 2; k++) {
             for (int j = 0; j < 3; j++) {
                 for (int i = 0; i < 24; i++) {
