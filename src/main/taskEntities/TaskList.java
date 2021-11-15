@@ -3,6 +3,7 @@ package taskEntities;
 import abstractClasses.Task;
 import interfaces.Storable;
 
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,5 +18,21 @@ public class TaskList implements Storable {
 
     public void setTaskList(List<Task> taskList) {
         this.taskList = taskList;
+    }
+
+    public String toString() {
+        StringBuilder output = new StringBuilder("Your to-do list:");
+
+        output.append("\n");
+        if (taskList.isEmpty()) {
+            output.append("(Currently Empty)");
+        }
+        else {
+            for (Task task: getTaskList()) {
+                output.append(task);
+            }
+        }
+
+        return output.toString();
     }
 }

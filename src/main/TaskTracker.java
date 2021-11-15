@@ -22,6 +22,10 @@ public class TaskTracker {
         this.taskList = tasklist;
     }
 
+    public TaskList getTaskList() {
+        return taskList;
+    }
+
     // deal with Observer list
     public void addNewObservers(TaskObserver observer){
         observerList.add(observer);
