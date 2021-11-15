@@ -1,13 +1,18 @@
 package abstractClasses;
 
+import taskAttributes.*;
 import timeEntities.TimeToRemind;
 
 import java.util.ArrayList;
 public abstract class Task{
-    protected String name;
-    protected String priority;
-    protected String description;
-    protected String evaluation;
+
+    // Since there is so many attributes, I decided to implement a builder patterns,
+    // which will allow a task to be easier to be edited
+
+    protected TaskName name;
+    protected TaskPriority priority;
+    protected TaskDescription description;
+    protected TaskEvaluation evaluation = new TaskEvaluation("");
 
     protected ArrayList<Task> subTasks;
 
@@ -16,123 +21,60 @@ public abstract class Task{
 
     protected TimeToRemind remind;
 
-    // The booleans are all false at default
-    // Maybe not going to make contractors that deal with these bool.
-    protected boolean finished = false;
-    protected boolean recurring = false;
-    protected boolean allDay = false;
-
-
+    // The status are all false at default
+    protected Finished finished = new Finished();
+    protected Recurring recurring = new Recurring();
+    protected AllDay allDay = new AllDay();
 
     public Task(){
         // Empty task
     }
 
     public Task(String name, String priority, String description) {
-        this.name = name;
-        this.priority = priority;
-        this.description = description;
+        this.name = new TaskName(name);
+        this.priority = new TaskPriority(priority);
+        this.description = new TaskDescription(description);
     }
 
-    // constructor that creat a task
+    // constructor that creat a task with date and time
     public Task(String name, String priority, String description, Date date, Time time) {
 
-        if(name.equals("")){
-            this.name = "Unnamed";
-        }
-        else{
-            this.name = name;
-        }
-
-        this.priority = priority;
-        this.description = description;
+        this.name = new TaskName(name);
+        this.priority = new TaskPriority(priority);
+        this.description = new TaskDescription(description);
         this.date = date;
         this.time = time;
 
-
-        this.evaluation = "";
     }
 
-
-
-
-
-    //Getters and Setters
-
-    public String getName() {
+    public TaskName getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getPriority() {
+    public TaskPriority getPriority() {
         return priority;
     }
 
-    public void setPriority(String priority) {
-        this.priority = priority;
-    }
-
-    public String getDescription() {
+    public TaskDescription getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public String getEvaluation() {
+    public TaskEvaluation getEvaluation() {
         return evaluation;
-    }
-
-    public void setEvaluation(String evaluation) {
-        this.evaluation = evaluation;
     }
 
     public ArrayList<Task> getSubTasks() {
         return subTasks;
     }
 
-    public void setSubTasks(ArrayList<Task> subTasks) {
-        this.subTasks = subTasks;
-    }
-
-    public boolean isFinished() {
-        return finished;
-    }
-
-    public void setFinished(boolean finished) {
-        this.finished = finished;
-    }
-
-    public boolean isRecurring() {
-        return recurring;
-    }
-
-    public void setRecurring(boolean recurring) {
-        this.recurring = recurring;
-    }
-
-    public boolean isAllDay() {
-        return allDay;
-    }
-
-    public void setAllDay(boolean allDay) {
-        this.allDay = allDay;
-    }
-
     public Date getDate() {
         return date;
     }
 
+    public Time getTime() {return time;}
+
     public void setDate(Date date) {
         this.date = date;
-    }
-
-    public Time getTime() {
-        return time;
     }
 
     public void setTime(Time time) {
@@ -143,11 +85,17 @@ public abstract class Task{
         return remind;
     }
 
-    public void setRemind(TimeToRemind remind) {
-        this.remind = remind;
+    public Finished getFinished() {
+        return finished;
     }
 
+    public Recurring getRecurring() {
+        return recurring;
+    }
 
+    public AllDay getAllDay() {
+        return allDay;
+    }
 
     @Override
     public String toString() {
@@ -160,9 +108,9 @@ public abstract class Task{
                 ", date=" + date +
                 ", time=" + time +
                 ", remind=" + remind +
-                ", finished=" + finished +
-                ", recurring=" + recurring +
-                ", allDay=" + allDay +
+                ", finished=" + finished.getValue() +
+                ", recurring=" + recurring.getValue() +
+                ", allDay=" + allDay.getValue() +
                 '}';
     }
 }

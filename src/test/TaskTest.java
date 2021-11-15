@@ -46,7 +46,7 @@ public class TaskTest {
     void TestEventTask(){
         Task newTask = new EventTask(name,priority,description,dateRange,timeRange);
 
-        String expected = "Task{name='Math Work', priority='', description='', evaluation='', subTasks=null, " +
+        String expected = "Task{name='Math Work', priority='N/A', description='N/A', evaluation='N/A', subTasks=null, " +
                 "date=DateRange{startDate=2021-10-17, endDate=2021-10-17}, time=TimeRange{startTime=14:00, endTime=15:00}, "+
                 "remind=null, finished=false, recurring=false, allDay=false}";
 
@@ -59,15 +59,19 @@ public class TaskTest {
         Task newTask= new TodoTask(name,priority,description,oneDay,oneTime);
 
 
-        String expected = "Task{name='Math Work', priority='', description='', evaluation='', subTasks=null, " +
-                "date=Oneday{Date=2021-10-17}, time=Onetime{endTime=15:00}, "+
+        String expected = "Task{name='Math Work', priority='N/A', description='N/A', evaluation='N/A', subTasks=null, " +
+                "date=OneDay{date=2021-10-17}, time=OneTime{time=15:00}, "+
                 "remind=null, finished=false, recurring=false, allDay=false}";
+
+        assertEquals(expected, newTask.toString());
     }
 
     void TestSubTask(){
         Task newTask = new SubTask(name,priority,description);
 
-        String expected = "Task{name='Math Work', priority='', description='', evaluation='', subTasks=null";
+        String expected = "Task{name='Math Work', priority='N/A', description='N/A', evaluation='N/A', subTasks=null}";
+
+        assertEquals(expected, newTask.toString());
 
 
     }

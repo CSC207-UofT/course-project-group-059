@@ -1,19 +1,20 @@
 import abstractClasses.Task;
 import interfaces.TaskObserver;
+import taskEntities.TaskList;
 
 import java.util.*;
 
 public class TaskTracker {
 
-//Task Tracker will implement Observer design pattern
+//Task Tracker implements Observer design pattern
     private final List<TaskObserver> observerList = new ArrayList<>();
 
     private final TaskList taskList;
 
 
     //Constructor
-    public TaskTracker(TaskList taskList, TaskObserver... observers) {
-        this.taskList = taskList;
+    public TaskTracker(TaskList tasklist, TaskObserver... observers) {
+        this.taskList = tasklist;
         Collections.addAll(observerList, observers);
     }
 
@@ -31,9 +32,15 @@ public class TaskTracker {
     }
 
     // auto update to the observer
-    private void refreshObserver(Task task){
+    private void simpleRefreshObserver(Task task){
         for(TaskObserver observer: observerList){
             observer.simpleRefresh(task);
+        }
+    }
+
+    private void refreshObserver(){
+        for(TaskObserver observer: observerList){
+            observer.refresh(taskList);
         }
     }
 
@@ -42,16 +49,14 @@ public class TaskTracker {
 
     public void addTask(Task task){
         taskList.getTaskList().add(task);
-        refreshObserver(task);
+        simpleRefreshObserver(task);
     }
 
     public void deleteTask(Task task){
         taskList.getTaskList().remove(task);
-        refreshObserver(task);
+        simpleRefreshObserver(task);
     }
 
-
-//TODO edit Task
 
 
 }

@@ -12,7 +12,7 @@ public class OneDay extends Date {
     @Override
     public String toString() {
         return "OneDay{" +
-                "date=" + date +
+                "date=" + endDate +
                 '}';
     }
 }
