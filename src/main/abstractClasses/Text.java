@@ -16,9 +16,7 @@ public abstract class Text {
         this.value = newValue;
     }
 
-    public void update(Text text){
-        text.value = text.toString();
-    }
+    public void update(Text text){this.value = text.toString(); }
 
     @Override
     public String toString() {

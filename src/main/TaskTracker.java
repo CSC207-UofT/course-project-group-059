@@ -18,6 +18,10 @@ public class TaskTracker {
         Collections.addAll(observerList, observers);
     }
 
+    public TaskTracker(TaskList tasklist) {
+        this.taskList = tasklist;
+    }
+
     // deal with Observer list
     public void addNewObservers(TaskObserver observer){
         observerList.add(observer);
@@ -33,8 +37,10 @@ public class TaskTracker {
 
     // auto update to the observer
     private void simpleRefreshObserver(Task task){
-        for(TaskObserver observer: observerList){
-            observer.simpleRefresh(task);
+        if(!observerList.isEmpty()){
+            for(TaskObserver observer: observerList){
+                observer.simpleRefresh(task);
+            }
         }
     }
 
