@@ -1,8 +1,12 @@
+import taskEntities.TaskList;
+import taskEntities.Timeline;
+
 public class Main {
         public static void main(String[]args){
-//            TaskTracker tracker = new TaskTracker();
-//            Timeline timeline = new Timeline();
-//
-//            UserFunctions.mainMenu(timeline,tracker);
+            TaskList tasklist = new TaskList();
+            TaskTracker tracker = new TaskTracker(tasklist);
+            Timeline timeline = new Timeline();
+
+            UserFunctions.mainMenu(timeline,tracker);
         }
     }

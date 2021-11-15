@@ -7,7 +7,7 @@ It is useful to have a conventional scheduling application, and it is also usefu
 1.  A to-do list    
 2.  A Pomodoro timer that is able to set a timer for working and relaxing.    
 3.  A scheduling system using time blocking, having due date reminders   
-4.  Timeline and time blocks   
+4.  taskEntities.Timeline and time blocks   
 5.  taskEntities with description paragraphs, due dates, and priority 
 6.  Suggestion for the day   
 7.  Evaluation of the taskEntities    

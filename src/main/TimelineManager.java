@@ -2,8 +2,6 @@ import abstractClasses.Task;
 import interfaces.TaskObserver;
 import taskEntities.*;
 
-import java.util.ArrayList;
-
 public class TimelineManager  implements TaskObserver {
     Timeline timeline;
 
