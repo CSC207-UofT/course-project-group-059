@@ -26,7 +26,11 @@ public abstract class Date {
 
 
     public LocalDate getStartDate() {
-        return startDate;
+        if(this.startDate == null){
+
+            return this.endDate;
+        }
+        else return this.startDate;
     }
 
     public LocalDate getEndDate() {
@@ -34,6 +38,7 @@ public abstract class Date {
     }
 
     public void setStartDate(LocalDate startDate) {
+
         this.startDate = startDate;
     }
 
