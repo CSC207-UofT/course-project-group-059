@@ -7,7 +7,7 @@ import taskAttributes.*;
 
 public class EditTaskText implements EditStrategy {
 
-    private Text newText;
+    private final Text newText;
 
     public EditTaskText(Text newText) {
         this.newText = newText;

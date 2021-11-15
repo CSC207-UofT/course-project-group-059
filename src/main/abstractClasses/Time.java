@@ -21,29 +21,28 @@ public abstract class Time {
         return endTime;
     }
 
-    private void setTime(LocalTime time) {
-        this.endTime = time;
-    }
-
-
-    public LocalTime getStartTime() {
-        return startTime;
-    }
-
-    public LocalTime getEndTime() {
-        return endTime;
-    }
-
-    public void setStartTime(LocalTime startTime) {
-        this.startTime = startTime;
-    }
-
-    public void setEndTime(LocalTime enTime) {
-        this.endTime = enTime;
-    }
-
-    public boolean isNow(){
-        LocalTime now = LocalTime.now();
-        return this.startTime.equals(now) || this.endTime.equals(now);
-    }
+//    private void setTime(LocalTime time) {
+//        this.endTime = time;
+//    }
+//
+//    public LocalTime getStartTime() {
+//        return startTime;
+//    }
+//
+//    public LocalTime getEndTime() {
+//        return endTime;
+//    }
+//
+//    public void setStartTime(LocalTime startTime) {
+//        this.startTime = startTime;
+//    }
+//
+//    public void setEndTime(LocalTime enTime) {
+//        this.endTime = enTime;
+//    }
+//
+//    public boolean isNow(){
+//        LocalTime now = LocalTime.now();
+//        return this.startTime.equals(now) || this.endTime.equals(now);
+//    }
 }

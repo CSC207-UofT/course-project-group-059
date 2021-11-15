@@ -9,21 +9,21 @@ public class TimeToRemind {
         this.remindTime = remindTime;
     }
 
-    public OneDay getRemindDate() {
-        return remindDate;
-    }
-
-    public void setRemindDate(OneDay remindDate) {
-        this.remindDate = remindDate;
-    }
-
-    public OneTime getRemindTime() {
-        return remindTime;
-    }
-
-    public void setRemindTime(OneTime remindTime) {
-        this.remindTime = remindTime;
-    }
+//    public OneDay getRemindDate() {
+//        return remindDate;
+//    }
+//
+//    public void setRemindDate(OneDay remindDate) {
+//        this.remindDate = remindDate;
+//    }
+//
+//    public OneTime getRemindTime() {
+//        return remindTime;
+//    }
+//
+//    public void setRemindTime(OneTime remindTime) {
+//        this.remindTime = remindTime;
+//    }
 
     @Override
     public String toString() {

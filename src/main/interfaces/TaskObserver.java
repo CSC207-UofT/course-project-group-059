@@ -3,7 +3,7 @@ package interfaces;
 import abstractClasses.Task;
 import taskEntities.TaskList;
 
-import java.util.ArrayList;
+//import java.util.ArrayList;
 
 public interface TaskObserver {
 

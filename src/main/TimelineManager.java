@@ -5,9 +5,9 @@ import taskEntities.*;
 public class TimelineManager  implements TaskObserver {
     Timeline timeline;
 
-    public TimelineManager(Timeline timeline) {
-        this.timeline = timeline;
-    }
+//    public TimelineManager(Timeline timeline) {
+//        this.timeline = timeline;
+//    }
 
     // TaskObserver's methods
     @Override
@@ -31,19 +31,19 @@ public class TimelineManager  implements TaskObserver {
     // same day or not, all day or not, repeated or not
 
 
-    public void addToTime(Task task){
-
-    }
-
-    // delete and Task from the timeline
-    public void deleteFromTime(Task task){
-
-    }
-
-    //TODO deal with time with modified time and date
-    public void shiftToTime(Task task){
-
-    }
+//    public void addToTime(Task task){
+//
+//    }
+//
+//    // delete and Task from the timeline
+//    public void deleteFromTime(Task task){
+//
+//    }
+//
+//    //TODO deal with time with modified time and date
+//    public void shiftToTime(Task task){
+//
+//    }
 
 
 

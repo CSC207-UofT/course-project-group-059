@@ -81,9 +81,9 @@ public abstract class Task{
         this.time = time;
     }
 
-    public TimeToRemind getRemind() {
-        return remind;
-    }
+//    public TimeToRemind getRemind() {
+//        return remind;
+//    }
 
     public Finished getFinished() {
         return finished;

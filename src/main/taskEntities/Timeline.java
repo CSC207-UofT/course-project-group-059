@@ -11,7 +11,7 @@ import java.time.*;
 // Thought: maybe we can simply just use array rather than arrayList.
 public class Timeline implements Storable {
     private final LinkedHashMap<LocalTime, ArrayList<Task>> timeline;
-    private final ArrayList<Task> allDayList;
+//    private final ArrayList<Task> allDayList;
 
     //constructor and assign all the time block in to timeline
     public Timeline(){
@@ -25,16 +25,16 @@ public class Timeline implements Storable {
             timeline.put(LocalTime.parse(hour), tasks);
         }
 
-        allDayList = new ArrayList<>();
+//        allDayList = new ArrayList<>();
     }
 
-    public LinkedHashMap<LocalTime, ArrayList<Task>> getTimeline() {
-        return timeline;
-    }
-
-    public ArrayList<Task> getAllDayList() {
-        return allDayList;
-    }
+//    public LinkedHashMap<LocalTime, ArrayList<Task>> getTimeline() {
+//        return timeline;
+//    }
+//
+//    public ArrayList<Task> getAllDayList() {
+//        return allDayList;
+//    }
 
     @Override
     public String toString() {
