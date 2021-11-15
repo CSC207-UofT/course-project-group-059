@@ -1,3 +1,5 @@
+package taskEntities;
+
 import abstractClasses.*;
 import interfaces.*;
 

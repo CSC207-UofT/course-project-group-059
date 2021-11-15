@@ -1,7 +1,9 @@
 import org.junit.Test;
+import taskEntities.Timeline;
+
 import static org.junit.Assert.assertEquals;
 
-// Test that initial Timeline is printed correctly
+// Test that initial taskEntities.Timeline is printed correctly
 public class TimelineTest {
 
     @Test

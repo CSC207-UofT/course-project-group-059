@@ -1,5 +1,8 @@
-import java.time.LocalDate;
-import java.time.LocalTime;
+import printers.TaskListPrinter;
+import printers.TimelinePrinter;
+import taskEntities.TaskList;
+import taskEntities.Timeline;
+
 import java.util.Scanner;
 
 public class UserFunctions{
@@ -39,7 +42,7 @@ public class UserFunctions{
         }
     }
 
-    // print either Timeline, TaskTracker or Suggestion list
+    // print either taskEntities.Timeline, TaskList or Suggestion list
     public static void printer(Timeline timeline, TaskTracker tracker){
         String msg = "\nM to show timeline" +
                      "\nL to show to-do list" +
@@ -53,13 +56,14 @@ public class UserFunctions{
         String key = reader.nextLine();
 
         if (key.equalsIgnoreCase("M")) {
-            System.out.println(timeline);
+            TimelinePrinter.print(timeline);
         }
         else if (key.equalsIgnoreCase("L")) {
-            System.out.println(tracker);
+            TaskList tasklist = tracker.getTaskList();
+            TaskListPrinter.print(tasklist);
         }
         else if (key.equalsIgnoreCase("S")) {
-            System.out.println("Not implement this feature yet");
+            System.out.println("Not implemented yet");
         }
 
     }

@@ -6,7 +6,7 @@ Our chosen domain was a productivity application that would combine the features
 ## CRC Model
 Our CRC cards were written to explore this concept more in-depth, naming each class that is likely necessary to code the features from our specification. We used the principles of clean architecture to organize our classes into 4 groups:
 1. Entities: abstractClasses.Task, SubTask, AlarmClock
-2. Use Cases: TaskTracker, Suggestor, Timeline
+2. Use Cases: TaskTracker, Suggestor, taskEntities.Timeline
 3. Adapters: CSVWriter, Pomodoro
 4. Interface: UserFunctions
 
