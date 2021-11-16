@@ -33,7 +33,7 @@ The process of adding an implementation or change to the repository typically in
 Our code is sparsely documented at the moment, but we plan to add further documentation once the implementation is more finalized. Most IntelliJ warnings are resolved unless commenting out unused code results in another warning. However, a specific unsolved warning pops up when using string concatenation: “Concatenation can be replaced with text block.” This warning cannot be resolved, as replacing the string with a text block does not allow the program to run due to syntax errors.
 
 ## Testing
-Despite not testing all of our code due to time constraints, we did test the major components and our new features. We tested when a user wanted to change a Tasks name, description, date, time, and when it was a recurring task. Also tested was the implementation of the Observer design pattern.
+Despite not testing all of our code due to time constraints, we did test the major components and our new features. We tested when a user wanted to change a Tasks name, description, date, time, and whether it was a recurring task. Also tested was the implementation of the Observer design pattern.
 
 ## Refactoring
 Also due to time constraints, we were unfortunately unable to complete much refactoring. However, we still took note of which code smells we will need to deal with, such as long parameter lists.
@@ -80,7 +80,6 @@ Max
 - Planning to update UserFunctions and refactor/fix code smells
 
 Jacky
-- Updating specification
 - Writing design document
 - Setting up presentation
 - Planning to write more tests and update documents
