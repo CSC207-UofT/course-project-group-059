@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="TaskTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2021-11-23T18:55:26" hostname="ROBBYS-ASUSFX50" time="0.147">
+  <properties/>
+  <testcase name="TestSubTask()" classname="TaskTest" time="0.089"/>
+  <testcase name="TestTodoTask()" classname="TaskTest" time="0.049"/>
+  <testcase name="TestEventTask()" classname="TaskTest" time="0.007"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

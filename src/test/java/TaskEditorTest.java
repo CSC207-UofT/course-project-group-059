@@ -1,7 +1,8 @@
 import editStrategies.EditTaskStatus;
 import editStrategies.EditTaskText;
 import editStrategies.EditTime;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import task.taskAttributes.*;
 import task.taskEntities.EventTask;
 import task.taskUseCases.TaskEditor;
@@ -60,7 +61,7 @@ public class TaskEditorTest {
 
         EventTask expected = new EventTask("CSC207 Project", priority,description,dateRange,timeRange);
 
-        assertEquals(expected.getName().toString(),eventTask.getName().toString());
+        Assertions.assertEquals(expected.getName().toString(),eventTask.getName().toString());
 
     }
 
@@ -71,7 +72,7 @@ public class TaskEditorTest {
 
         EventTask expected = new EventTask(name, "HIGH",description,dateRange,timeRange);
 
-        assertEquals(expected.getPriority().toString(),eventTask.getPriority().toString());
+        Assertions.assertEquals(expected.getPriority().toString(),eventTask.getPriority().toString());
 
     }
 
@@ -82,7 +83,7 @@ public class TaskEditorTest {
 
         EventTask expected = new EventTask(name, priority,"Monday is the due day!!!",dateRange,timeRange);
 
-        assertEquals(expected.getDescription().toString(),eventTask.getDescription().toString());
+        Assertions.assertEquals(expected.getDescription().toString(),eventTask.getDescription().toString());
 
     }
 

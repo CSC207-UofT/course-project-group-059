@@ -1,4 +1,5 @@
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import timeline.Timeline;
 
 import static org.junit.Assert.assertEquals;
@@ -16,6 +17,6 @@ public class TimelineTest {
                           "18:00:\t\n19:00:\t\n20:00:\t\n21:00:\t\n22:00:\t\n23:00:\t";
         String output = timeline.toString();
 
-        assertEquals(expected, output);
+        Assertions.assertEquals(expected, output);
     }
 }
