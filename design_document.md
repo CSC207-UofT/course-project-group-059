@@ -1,7 +1,7 @@
 # Design Document
 
 ## Specification
-Our chosen domain was a productivity application that would combine the features of a typical scheduling app with a Pomodoro timer. The program now contains the following features:
+Our chosen domain was a productivity application that would combine the features of a typical scheduling app with a alarm.alarmUseCase.Pomodoro timer. The program now contains the following features:
 - EventTasks and TodoTasks
 - A timeline, split up by hour-long blocks
 - A to-do list
@@ -24,16 +24,16 @@ DIP: The responsibility of the CSVManager class is shifted to an interface to av
 Before starting to work on any implementation, we revised our CRC cards in accordance with the advice of our TA. Most of our revisions involved rearranging and splitting classes to fit the layers of Clean Architecture. One instance of this, as mentioned above, is using an interface to deal with storage, which avoids letting use cases depend on the CSVManager (an adapter) when loading data from CSV files.
 
 ## Design Patterns
-For our project, we made use of the Strategy and Observer Design Patterns. The interfaces for these design patterns can be found as “EditStrategy” and “TaskObserver” in the “interfaces” package. The Strategy Design Pattern is used to account for the different ways a user would edit a task. The Observer Design Pattern is used to notify other classes about changes made in the list of Tasks in TaskTracker.
+For our project, we made use of the Strategy and Observer Design Patterns. The interfaces for these design patterns can be found as “EditStrategy” and “TaskObserver” in the “interfaces” package. The Strategy Design Pattern is used to account for the different ways a user would edit a task. The Observer Design Pattern is used to notify other classes about changes made in the list of Tasks in task.taskUseCases.TaskTracker.
 
 ## Use of GitHub Features
 The process of adding an implementation or change to the repository typically involved members working on their individual branches and submitting pull requests. Another member would merge the branch after scanning through the changes, though we would occasionally just commit to the main branch if other members were inactive. We have not yet made use of issues or actions in GitHub, but we planned and split up our tasks using Trello.
 
 ## Code Style and Documentation
-Our code is sparsely documented at the moment, but we plan to add further documentation once the implementation is more finalized. Most IntelliJ warnings are resolved unless commenting out unused code results in another warning. However, a specific unsolved warning pops up when using string concatenation: “Concatenation can be replaced with text block.” This warning cannot be resolved, as replacing the string with a text block does not allow the program to run due to syntax errors.
+Our code is sparsely documented at the moment, but we plan to add further documentation once the implementation is more finalized. All IntelliJ warnings are resolved apart from one. A particular warning pops up when using string concatenation: “Concatenation can be replaced with text block.” However, this warning cannot be resolved, as replacing the string with a text block does not allow the program to run due to syntax errors.
 
 ## Testing
-Despite not testing all of our code due to time constraints, we did test the major components and our new features. We tested when a user wanted to change a Tasks name, description, date, time, and whether it was a recurring task. Also tested was the implementation of the Observer design pattern.
+Despite not testing all of our code due to time constraints, we did test the major components and our new features. We tested when a user wanted to change a Tasks name, description, date, time, and when it was a recurring task. Also tested was the implementation of the Observer design pattern.
 
 ## Refactoring
 Also due to time constraints, we were unfortunately unable to complete much refactoring. However, we still took note of which code smells we will need to deal with, such as long parameter lists.
@@ -43,7 +43,7 @@ The current package structure could be made more formal, but it is roughly sorte
 
 ## Functionality
 The specification written above is fulfilled, however it does not contain all the features we planned to implement. The following features are planned but are either not implemented or not yet accessible through the main file:
-- An alarm clock based on a Pomodoro system
+- An alarm clock based on a alarm.alarmUseCase.Pomodoro system
 - Storing and loading data in CSV
 - Sorting by priority and creating suggestions
 - Writing evaluations upon completion of each task
@@ -64,7 +64,7 @@ The specification written above is fulfilled, however it does not contain all th
 ## Contributions and Plans
 Robby
 - Implementing Task subclasses
-- Updating Timeline, TaskTracker, TaskList
+- Updating Timeline, task.taskUseCases.TaskTracker, TaskList
 - Implementing design patterns
 - Writing tests
 - Planning to implement further design patterns and tests
@@ -74,17 +74,17 @@ Bamdad
 - Planning to write documentation and implement SuggestionList
 
 Max
-- Updating specification
 - Implementing printers
 - Writing design document
-- Planning to update UserFunctions and refactor/fix code smells
+- Planning to update cmdUI.UserFunctions and refactor/fix code smells
 
 Jacky
+- Updating specification
 - Writing design document
 - Setting up presentation
 - Planning to write more tests and update documents
 
 Jennifer
-- Implementing AlarmClock and Pomodoro
+- Implementing alarm.alarmClockEntities.AlarmClock and alarm.alarmUseCase.Pomodoro
 - Planning to implement CSVManager and storage-related classes
 

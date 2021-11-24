@@ -1,14 +1,14 @@
 # Progress Report
 
 ## Domain and Specification
-Our chosen domain was a productivity application that would combine the features of a typical scheduling app with a Pomodoro timer. The written specification contains the features we plan to include in the app and a broad overview of how such a program would function in a general use case.
+Our chosen domain was a productivity application that would combine the features of a typical scheduling app with a alarm.alarmUseCase.Pomodoro timer. The written specification contains the features we plan to include in the app and a broad overview of how such a program would function in a general use case.
 
 ## CRC Model
 Our CRC cards were written to explore this concept more in-depth, naming each class that is likely necessary to code the features from our specification. We used the principles of clean architecture to organize our classes into 4 groups:
-1. Entities: abstractClasses.Task, SubTask, AlarmClock
-2. Use Cases: TaskTracker, Suggestor, taskEntities.Timeline
-3. Adapters: CSVWriter, Pomodoro
-4. Interface: UserFunctions
+1. Entities: task.taskEntities.Task, SubTask, alarm.alarmClockEntities.AlarmClock
+2. Use Cases: task.taskUseCases.TaskTracker, Suggestor, Timeline
+3. Adapters: CSVWriter, alarm.alarmUseCase.Pomodoro
+4. Interface: cmdUI.UserFunctions
 
 We occasionally needed to separate the responsibilities of one class into a new class, such as creating a class to handle CSV files, in order to follow the single-responsibility principle.
 
@@ -16,7 +16,7 @@ We occasionally needed to separate the responsibilities of one class into a new 
 Our walkthrough deals with the simple scenario of adding a scheduled, hour-long task. In order to accommodate this scenario in our code, we created a simple implementation of the classes and methods necessary for a user to run the scenario in the main method.
 
 ## Open Questions
-- How to save and load taskEntities when the program is closed and reopened
+- How to save and load task.taskEntities when the program is closed and reopened
 - Which date/time package is the best to use
 - How to package/group the project
 - How to further adhere to principles of clean architecture
