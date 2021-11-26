@@ -8,8 +8,6 @@ public class TimeRange extends Time {
        super(startTime,endTime);
     }
 
-
-
     @Override
     public String toString() {
         return "TimeRange{" +

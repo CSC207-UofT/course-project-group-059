@@ -24,7 +24,7 @@ public class EditTime implements EditStrategy {
     @Override
     public void edit(Task task){
         if (newDate != null) {
-            task.setDate(newDate);
+            newDate.overwriteToTask(task);
         }
         if (newTime != null){
             task.setTime(newTime);

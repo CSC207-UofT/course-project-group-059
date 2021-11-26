@@ -1,5 +1,7 @@
 package task.taskAttributes;
 
+import task.taskEntities.Task;
+
 public abstract class Text {
     protected String value;
 
@@ -17,6 +19,9 @@ public abstract class Text {
     }
 
     public void update(Text text){this.value = text.toString(); }
+
+    // part of the strategy pattern
+    public void overwriteToTask(Task task){}
 
     @Override
     public String toString() {

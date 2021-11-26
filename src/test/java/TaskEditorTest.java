@@ -1,3 +1,7 @@
+import dateAndTimeAttributes.DateRange;
+import dateAndTimeAttributes.OneDay;
+import dateAndTimeAttributes.OneTime;
+import dateAndTimeAttributes.TimeRange;
 import editStrategies.EditTaskStatus;
 import editStrategies.EditTaskText;
 import editStrategies.EditTime;
@@ -6,16 +10,9 @@ import org.junit.jupiter.api.Test;
 import task.taskAttributes.*;
 import task.taskEntities.EventTask;
 import task.taskUseCases.TaskEditor;
-import dateAndTimeAttributes.DateRange;
-import dateAndTimeAttributes.OneDay;
-import dateAndTimeAttributes.OneTime;
-import dateAndTimeAttributes.TimeRange;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
-
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotEquals;
 
 public class TaskEditorTest {
 
@@ -32,28 +29,9 @@ public class TaskEditorTest {
     TimeRange timeRange = new TimeRange(LocalTime.parse(startTime), LocalTime.parse(endTime));
     OneTime oneTime = new OneTime(LocalTime.parse(endTime));
 
+
+
     @Test
-    public void runTest() {
-
-        // test the editTaskText strategy
-        editNameTest();
-        editPriorityTest();
-        editDescriptionTest();
-
-        // test the editStatus strategy
-        editAllDayTest();
-        editFinishedTest();
-        editRecurringTest();
-
-        // test the editTime strategy
-        editDateTest();
-        editTimeTest();
-        editDateAndTimeTest();
-
-    }
-
-
-
     void editNameTest(){
         EventTask eventTask = new EventTask(name,priority,description,dateRange,timeRange);
 
@@ -64,7 +42,7 @@ public class TaskEditorTest {
         Assertions.assertEquals(expected.getName().toString(),eventTask.getName().toString());
 
     }
-
+    @Test
     void editPriorityTest(){
         EventTask eventTask = new EventTask(name,priority,description,dateRange,timeRange);
 
@@ -75,7 +53,7 @@ public class TaskEditorTest {
         Assertions.assertEquals(expected.getPriority().toString(),eventTask.getPriority().toString());
 
     }
-
+    @Test
     void editDescriptionTest(){
         EventTask eventTask = new EventTask(name,priority,description,dateRange,timeRange);
 
@@ -86,7 +64,7 @@ public class TaskEditorTest {
         Assertions.assertEquals(expected.getDescription().toString(),eventTask.getDescription().toString());
 
     }
-
+    @Test
     void editAllDayTest() {
         EventTask eventTask = new EventTask(name,priority,description,dateRange,timeRange);
 
@@ -94,9 +72,9 @@ public class TaskEditorTest {
 
         EventTask expected = new EventTask(name, priority,description,dateRange,timeRange);
 
-        assertNotEquals(expected.getAllDay().getValue(), eventTask.getAllDay().getValue());
+        Assertions.assertNotEquals(expected.getAllDay().getValue(), eventTask.getAllDay().getValue());
     }
-
+    @Test
     void editFinishedTest(){
         EventTask eventTask = new EventTask(name,priority,description,dateRange,timeRange);
 
@@ -104,9 +82,9 @@ public class TaskEditorTest {
 
         EventTask expected = new EventTask(name, priority,description,dateRange,timeRange);
 
-        assertNotEquals(expected.getFinished().getValue(), eventTask.getFinished().getValue());
+        Assertions.assertNotEquals(expected.getFinished().getValue(), eventTask.getFinished().getValue());
     }
-
+    @Test
     void editRecurringTest(){
         EventTask eventTask = new EventTask(name,priority,description,dateRange,timeRange);
 
@@ -114,10 +92,10 @@ public class TaskEditorTest {
 
         EventTask expected = new EventTask(name, priority,description,dateRange,timeRange);
 
-        assertNotEquals(expected.getRecurring().getValue(), eventTask.getRecurring().getValue());
+        Assertions.assertNotEquals(expected.getRecurring().getValue(), eventTask.getRecurring().getValue());
     }
 
-
+    @Test
     void editDateTest(){
 
         String newStart = "2021-11-07";
@@ -131,11 +109,11 @@ public class TaskEditorTest {
 
         EventTask expected = new EventTask(name, priority,description,newDateRange,timeRange);
 
-        assertEquals(expected.getDate().toString(), eventTask.getDate().toString() );
+        Assertions.assertEquals(expected.getDate().toString(), eventTask.getDate().toString() );
 
 
     }
-
+    @Test
     void editTimeTest(){
 
         String newStart = "16:00";
@@ -149,10 +127,10 @@ public class TaskEditorTest {
 
         EventTask expected = new EventTask(name, priority,description,dateRange,newTimeRange);
 
-        assertEquals(expected.getTime().toString(), eventTask.getTime().toString() );
+        Assertions.assertEquals(expected.getTime().toString(), eventTask.getTime().toString() );
 
     }
-
+    @Test
     void editDateAndTimeTest(){
 
         String newStartDate = "2021-11-07";
@@ -171,8 +149,8 @@ public class TaskEditorTest {
 
         EventTask expected = new EventTask(name, priority,description,newDateRange,newTimeRange);
 
-        assertEquals(expected.getDate().toString(), eventTask.getDate().toString() );
-        assertEquals(expected.getTime().toString(), eventTask.getTime().toString());
+        Assertions.assertEquals(expected.getDate().toString(), eventTask.getDate().toString() );
+        Assertions.assertEquals(expected.getTime().toString(), eventTask.getTime().toString());
 
     }
 
