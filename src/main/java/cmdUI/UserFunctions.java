@@ -17,12 +17,14 @@ public class UserFunctions{
     TimelineManager timelineManager;
 
     public UserFunctions() {
+        // TODO: Remove instances of TaskList and Timeline (Entities)
         this.tasklist = new TaskList();
         this.tracker = new TaskTracker(this.tasklist);
         this.timeline = new Timeline();
         this.timelineManager = new TimelineManager(this.timeline);
     }
 
+    // Begin prompt which allows user to access features
     public void mainMenu() {
         System.out.println("Welcome back!");
         System.out.println("What would you like to do?");
@@ -30,6 +32,7 @@ public class UserFunctions{
                      "\nP to print information" +
                      "\nX to exit";
 
+        // Repeat message until user chooses to exit
         while (true) {
             System.out.println(msg);
 
@@ -48,7 +51,7 @@ public class UserFunctions{
         }
     }
 
-    // ask user what to do, and access the corresponding method in abstractClasses.Task tracker
+    // Ask user what to do, and access the corresponding method in the TaskTracker
     public void manageTask(){
         String msg = "\nA to create and add a task" +
                      "\nENTER to exit";
@@ -58,12 +61,13 @@ public class UserFunctions{
         Scanner reader = new Scanner(System.in);
         String key = reader.nextLine();
 
+        // Call createTask
         if (key.equalsIgnoreCase("A")) {
             TaskCreator.createTask(this.tracker);
         }
     }
 
-    // print either storableEntities.Timeline, TaskList or Suggestion list
+    // Print either Timeline, TaskList or Suggestion list
     public void printer(){
         String msg = "\nM to show timeline" +
                      "\nL to show to-do list" +
@@ -75,6 +79,7 @@ public class UserFunctions{
         Scanner reader = new Scanner(System.in);
         String key = reader.nextLine();
 
+        // Call print method in respective printer classes
         if (key.equalsIgnoreCase("M")) {
             TimelinePrinter.print(this.timeline);
         }
@@ -86,7 +91,7 @@ public class UserFunctions{
         }
     }
 
-    // method about pomodoro
+    // TODO: Add method for Pomodoro
 
 
 
