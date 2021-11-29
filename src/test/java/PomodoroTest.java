@@ -1,32 +1,39 @@
 import alarm.alarmUseCase.Pomodoro;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.*;
-
 public class PomodoroTest {
-    Pomodoro p = new Pomodoro();
+    int workInt = 4;
+    int shortDur = 5;
+    int longDur = 15;
+    int workDur = 25;
+
+    Pomodoro p = new Pomodoro(workInt, shortDur, longDur, workDur);
 
     @Test
     public void updateTest() {
         for (int k = 0; k < 2; k++) {
-            for (int j = 0; j < 3; j++) {
-                for (int i = 0; i < 24; i++) {
-                    assertEquals("", p.update());
+            for (int j = 0; j < workInt-1; j++) {
+                for (int i = 0; i < workDur-1; i++) {
+                    Assertions.assertEquals("", p.update());
                 }
-                assertEquals("Start relaxing now!", p.update());
-                for (int i = 0; i < 4; i++) {
-                    assertEquals("", p.update());
+                Assertions.assertEquals(Pomodoro.getBreakMsg(), p.update());
+
+                for (int i = 0; i < shortDur-1; i++) {
+                    Assertions.assertEquals("", p.update());
                 }
-                assertEquals("Start working now!", p.update());
+                Assertions.assertEquals(Pomodoro.getWorkMsg(), p.update());
             }
-            for (int i = 0; i < 24; i++) {
-                assertEquals("", p.update());
+
+            for (int i = 0; i < workDur-1; i++) {
+                Assertions.assertEquals("", p.update());
             }
-            assertEquals("Start relaxing now!", p.update());
-            for (int i = 0; i < 14; i++) {
-                assertEquals("", p.update());
+            Assertions.assertEquals(Pomodoro.getBreakMsg(), p.update());
+
+            for (int i = 0; i < longDur-1; i++) {
+                Assertions.assertEquals("", p.update());
             }
-            assertEquals("Start working now!", p.update());
+            Assertions.assertEquals(Pomodoro.getWorkMsg(), p.update());
         }
     }
 }
