@@ -1,4 +1,4 @@
-package dateAndTimeAttributes;
+package dateAndTime.dateAndTimeAttributes;
 
 import task.taskEntities.Task;
 
@@ -10,7 +10,16 @@ public abstract class Date {
     protected LocalDate endDate;
 
     protected Date(LocalDate date) {
+        this.startDate = date;
         this.endDate = date;
+    }
+
+    // Only return a localDate when startDate and endDate are the same.
+    public LocalDate getDate() {
+        if(startDate.equals(endDate)){
+            return endDate;
+        }
+        return null;
     }
 
     public Date(LocalDate startDate, LocalDate endDate) {
@@ -18,38 +27,22 @@ public abstract class Date {
         this.endDate = endDate;
     }
 
-    public LocalDate getDate() {
-        return endDate;
-    }
-
-    public void setDate(LocalDate date) {
-        this.endDate = date;
-    }
+    // getter and setter for each localDate//These methods are dealing with the case that startDate and endDate are different
 
     public LocalDate getStartDate() {
-        if(this.startDate == null){
-            return this.endDate;
-        }
-        else return this.startDate;
+        return this.startDate;
     }
 
     public LocalDate getEndDate() {
         return endDate;
     }
 
-    public void setStartDate(LocalDate startDate) {this.startDate = startDate;}
-
-    public void setEndDate(LocalDate endDate) {
-        this.endDate = endDate;
+    public boolean isOneday(){
+        return startDate.equals(endDate);
     }
 
 
-    // TODO: there might have some more conditions have deal with here....
-    public boolean isStartAndEndToday(){
-        return true;
-    }
-
-
+    // This method is a helper for the task edit strategy.
     public void overwriteToTask(Task task) {
         task.setDate(this);
     }

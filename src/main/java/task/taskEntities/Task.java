@@ -1,9 +1,9 @@
 package task.taskEntities;
 
 import task.taskAttributes.*;
-import dateAndTimeAttributes.Date;
-import dateAndTimeAttributes.Time;
-import dateAndTimeAttributes.TimeToRemind;
+import dateAndTime.dateAndTimeAttributes.Date;
+import dateAndTime.dateAndTimeAttributes.Time;
+import dateAndTime.dateAndTimeAttributes.TimeToRemind;
 
 import java.util.ArrayList;
 public abstract class Task{

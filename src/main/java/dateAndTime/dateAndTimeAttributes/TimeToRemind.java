@@ -1,4 +1,4 @@
-package dateAndTimeAttributes;
+package dateAndTime.dateAndTimeAttributes;
 
 public class TimeToRemind {
     private OneDay remindDate;

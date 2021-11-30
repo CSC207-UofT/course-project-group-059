@@ -1,10 +1,10 @@
-import dateAndTimeAttributes.DateRange;
-import dateAndTimeAttributes.OneDay;
-import dateAndTimeAttributes.OneTime;
-import dateAndTimeAttributes.TimeRange;
+import dateAndTime.dateAndTimeAttributes.DateRange;
+import dateAndTime.dateAndTimeAttributes.OneDay;
+import dateAndTime.dateAndTimeAttributes.OneTime;
+import dateAndTime.dateAndTimeAttributes.TimeRange;
 import editStrategies.EditTaskStatus;
 import editStrategies.EditTaskText;
-import editStrategies.EditTime;
+import editStrategies.EditTaskDateAndTime;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import task.taskAttributes.*;
@@ -105,7 +105,7 @@ public class TaskEditorTest {
 
         EventTask eventTask = new EventTask(name,priority,description,dateRange,timeRange);
 
-        TaskEditor.editTask(eventTask, new EditTime(newDateRange));
+        TaskEditor.editTask(eventTask, new EditTaskDateAndTime(newDateRange));
 
         EventTask expected = new EventTask(name, priority,description,newDateRange,timeRange);
 
@@ -123,7 +123,7 @@ public class TaskEditorTest {
 
         EventTask eventTask = new EventTask(name,priority,description,dateRange,timeRange);
 
-        TaskEditor.editTask(eventTask, new EditTime(newTimeRange));
+        TaskEditor.editTask(eventTask, new EditTaskDateAndTime(newTimeRange));
 
         EventTask expected = new EventTask(name, priority,description,dateRange,newTimeRange);
 
@@ -145,7 +145,7 @@ public class TaskEditorTest {
 
         EventTask eventTask = new EventTask(name,priority,description,dateRange,timeRange);
 
-        TaskEditor.editTask(eventTask, new EditTime(newDateRange,newTimeRange));
+        TaskEditor.editTask(eventTask, new EditTaskDateAndTime(newDateRange,newTimeRange));
 
         EventTask expected = new EventTask(name, priority,description,newDateRange,newTimeRange);
 

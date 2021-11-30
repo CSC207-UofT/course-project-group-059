@@ -1,23 +1,23 @@
 package editStrategies;
 
 import task.taskEntities.Task;
-import dateAndTimeAttributes.Date;
-import dateAndTimeAttributes.Time;
+import dateAndTime.dateAndTimeAttributes.Date;
+import dateAndTime.dateAndTimeAttributes.Time;
 
-public class EditTime implements EditStrategy {
+public class EditTaskDateAndTime implements EditStrategy {
     private Date newDate;
     private Time newTime;
 
-    public EditTime(Date newDate, Time newTime) {
+    public EditTaskDateAndTime(Date newDate, Time newTime) {
         this.newDate = newDate;
         this.newTime = newTime;
     }
 
-    public EditTime(Date newDate) {
+    public EditTaskDateAndTime(Date newDate) {
         this.newDate = newDate;
     }
 
-    public EditTime(Time newTime) {
+    public EditTaskDateAndTime(Time newTime) {
         this.newTime = newTime;
     }
 

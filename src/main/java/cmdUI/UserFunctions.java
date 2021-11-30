@@ -7,8 +7,8 @@ import task.taskEntities.EventTask;
 import task.tasklistEntities.TaskList;
 import timeline.Timeline;
 import task.taskUseCases.TaskTracker;
-import dateAndTimeAttributes.DateRange;
-import dateAndTimeAttributes.TimeRange;
+import dateAndTime.dateAndTimeAttributes.DateRange;
+import dateAndTime.dateAndTimeAttributes.TimeRange;
 
 import java.time.LocalDate;
 import java.time.LocalTime;

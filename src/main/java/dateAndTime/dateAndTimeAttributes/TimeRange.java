@@ -1,4 +1,4 @@
-package dateAndTimeAttributes;
+package dateAndTime.dateAndTimeAttributes;
 
 import java.time.LocalTime;
 

@@ -1,7 +1,7 @@
 package task.taskEntities;
 
-import dateAndTimeAttributes.OneDay;
-import dateAndTimeAttributes.OneTime;
+import dateAndTime.dateAndTimeAttributes.OneDay;
+import dateAndTime.dateAndTimeAttributes.OneTime;
 
 public class TodoTask extends Task {
     public TodoTask(String name, String priority, String description, OneDay date, OneTime time) {
