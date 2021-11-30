@@ -104,10 +104,7 @@ public class UserFunctions{
         String endDate = reader.nextLine();
         System.out.println("Please input the end time of the task (HH:mm)");
         String endTime = reader.nextLine();
-        DateRange dateRange = new DateRange(LocalDate.parse(startDate), LocalDate.parse(endDate));
-        TimeRange timeRange = new TimeRange(LocalTime.parse(startTime), LocalTime.parse(endTime));
-        Task task = new EventTask(name,priority,description, dateRange, timeRange);
-        tracker.addTask(task);
+        tracker.creatEventTask(name,priority,description,startDate,startTime,endDate,endTime);
     }
 
 }
