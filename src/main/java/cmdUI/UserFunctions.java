@@ -1,17 +1,10 @@
 package cmdUI;
 
-import task.taskEntities.Task;
 import printers.TaskListPrinter;
 import printers.TimelinePrinter;
-import task.taskEntities.EventTask;
 import task.tasklistEntities.TaskList;
 import timeline.Timeline;
 import task.taskUseCases.TaskTracker;
-import dateAndTime.dateAndTimeAttributes.DateRange;
-import dateAndTime.dateAndTimeAttributes.TimeRange;
-
-import java.time.LocalDate;
-import java.time.LocalTime;
 import java.util.Scanner;
 
 public class UserFunctions{
