@@ -1,8 +1,8 @@
 package task.taskEntities;
 
 
-import dateAndTimeAttributes.DateRange;
-import dateAndTimeAttributes.TimeRange;
+import dateAndTime.dateAndTimeAttributes.DateRange;
+import dateAndTime.dateAndTimeAttributes.TimeRange;
 
 public class EventTask extends Task {
 

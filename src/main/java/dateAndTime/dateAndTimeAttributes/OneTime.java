@@ -1,4 +1,4 @@
-package dateAndTimeAttributes;
+package dateAndTime.dateAndTimeAttributes;
 
 import java.time.LocalTime;
 
@@ -7,11 +7,10 @@ public class OneTime extends Time {
         super(time);
     }
 
-
     @Override
     public String toString() {
         return "OneTime{" +
-                "time=" + endTime +
+                "time=" + startTime +
                 '}';
     }
 }

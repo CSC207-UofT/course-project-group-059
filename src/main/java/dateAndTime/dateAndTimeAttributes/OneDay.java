@@ -1,6 +1,4 @@
-package dateAndTimeAttributes;
-
-import task.taskEntities.Task;
+package dateAndTime.dateAndTimeAttributes;
 
 import java.time.LocalDate;
 

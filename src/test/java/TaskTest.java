@@ -1,9 +1,10 @@
-
+import dateAndTime.dateAndTimeAttributes.*;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import task.taskEntities.Task;
-import task.taskEntities.*;
+import task.taskEntities.EventTask;
 import task.taskEntities.SubTask;
-import dateAndTimeAttributes.*;
+import task.taskEntities.Task;
+import task.taskEntities.TodoTask;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -34,7 +35,7 @@ public class TaskTest {
                 "date=DateRange{startDate=2021-10-17, endDate=2021-10-17}, time=TimeRange{startTime=14:00, endTime=15:00}, "+
                 "remind=null, finished=false, recurring=false, allDay=false}";
 
-        assertEquals(expected, newTask.toString());
+        Assertions.assertEquals(expected, newTask.toString());
 
 
     }
@@ -47,7 +48,7 @@ public class TaskTest {
                 "date=OneDay{date=2021-10-17}, time=OneTime{time=15:00}, "+
                 "remind=null, finished=false, recurring=false, allDay=false}";
 
-        assertEquals(expected, newTask.toString());
+        Assertions.assertEquals(expected, newTask.toString());
     }
     @Test
     public void TestSubTask(){
@@ -55,7 +56,7 @@ public class TaskTest {
 
         String expected = "Task{name='Math Work', priority='N/A', description='N/A', evaluation='N/A', subTasks=null}";
 
-        assertEquals(expected, newTask.toString());
+        Assertions.assertEquals(expected, newTask.toString());
 
 
     }
