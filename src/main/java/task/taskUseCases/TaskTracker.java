@@ -66,7 +66,7 @@ public class TaskTracker {
 // deal with taskList and task creation
 
     public void creatEventTask(String name,String priority,String description,
-                               String startDate,String endDate, String startTime, String endTime){
+                               String startDate,String startTime, String endDate, String endTime){
         DateRange dateRange = new DateRange(LocalDate.parse(startDate), LocalDate.parse(endDate));
         TimeRange timeRange = new TimeRange(LocalTime.parse(startTime), LocalTime.parse(endTime));
         Task task = new EventTask(name,priority,description, dateRange, timeRange);
