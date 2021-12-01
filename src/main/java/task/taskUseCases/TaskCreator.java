@@ -1,7 +1,7 @@
 package task.taskUseCases;
 
-import dateAndTimeAttributes.DateRange;
-import dateAndTimeAttributes.TimeRange;
+import dateAndTime.dateAndTimeAttributes.DateRange;
+import dateAndTime.dateAndTimeAttributes.TimeRange;
 import task.taskEntities.EventTask;
 import task.taskEntities.Task;
 
