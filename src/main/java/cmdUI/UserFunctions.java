@@ -2,7 +2,8 @@ package cmdUI;
 
 import printers.TaskListPrinter;
 import printers.TimelinePrinter;
-import task.taskUseCases.TaskCreator;
+
+import task.taskController.TaskCreator;
 import task.taskUseCases.TaskTracker;
 import timeline.TimelineManager;
 import task.tasklistEntities.TaskList;
@@ -29,8 +30,8 @@ public class UserFunctions{
         System.out.println("Welcome back!");
         System.out.println("What would you like to do?");
         String msg = "\nM to manage tasks" +
-                     "\nP to print information" +
-                     "\nX to exit";
+                "\nP to print information" +
+                "\nX to exit";
 
         // Repeat message until user chooses to exit
         while (true) {
@@ -54,7 +55,7 @@ public class UserFunctions{
     // Ask user what to do, and access the corresponding method in the TaskTracker
     public void manageTask(){
         String msg = "\nA to create and add a task" +
-                     "\nENTER to exit";
+                "\nENTER to exit";
 
         System.out.println(msg);
 
@@ -70,9 +71,9 @@ public class UserFunctions{
     // Print either Timeline, TaskList or Suggestion list
     public void printer(){
         String msg = "\nM to show timeline" +
-                     "\nL to show to-do list" +
-                     "\nS to show suggestion list" +
-                     "\nENTER to exit";
+                "\nL to show to-do list" +
+                "\nS to show suggestion list" +
+                "\nENTER to exit";
 
         System.out.println(msg);
 

@@ -1,12 +1,7 @@
-package task.taskUseCases;
+package task.taskController;
 
-import dateAndTime.dateAndTimeAttributes.DateRange;
-import dateAndTime.dateAndTimeAttributes.TimeRange;
-import task.taskEntities.EventTask;
-import task.taskEntities.Task;
+import task.taskUseCases.TaskTracker;
 
-import java.time.LocalDate;
-import java.time.LocalTime;
 import java.util.Scanner;
 
 public class TaskCreator {
@@ -28,9 +23,7 @@ public class TaskCreator {
         System.out.println("Please input the end time of the task (HH:mm)");
         String endTime = reader.nextLine();
 
-        DateRange dateRange = new DateRange(LocalDate.parse(startDate), LocalDate.parse(endDate));
-        TimeRange timeRange = new TimeRange(LocalTime.parse(startTime), LocalTime.parse(endTime));
-        Task task = new EventTask(name, priority, description, dateRange, timeRange);
-        tracker.addTask(task);
+        //TODO: A task creator for TODOTask
+        tracker.creatEventTask(name,priority,description,startDate,startTime,endDate,endTime);
     }
 }

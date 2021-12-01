@@ -1,8 +1,16 @@
 package task.taskUseCases;
 
+import dateAndTime.dateAndTimeAttributes.DateRange;
+import dateAndTime.dateAndTimeAttributes.OneDay;
+import dateAndTime.dateAndTimeAttributes.OneTime;
+import dateAndTime.dateAndTimeAttributes.TimeRange;
+import task.taskEntities.EventTask;
 import task.taskEntities.Task;
+import task.taskEntities.TodoTask;
 import task.tasklistEntities.TaskList;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.*;
 
 public class TaskTracker {
@@ -11,7 +19,6 @@ public class TaskTracker {
     private final List<TaskObserver> observerList = new ArrayList<>();
 
     private final TaskList taskList;
-
 
     //Constructor
     public TaskTracker(TaskList tasklist, TaskObserver... observers) {
@@ -56,7 +63,25 @@ public class TaskTracker {
     }
 
 
-// deal with taskList
+// deal with taskList and task creation
+
+    public void creatEventTask(String name,String priority,String description,
+                               String startDate,String startTime, String endDate, String endTime){
+        DateRange dateRange = new DateRange(LocalDate.parse(startDate), LocalDate.parse(endDate));
+        TimeRange timeRange = new TimeRange(LocalTime.parse(startTime), LocalTime.parse(endTime));
+        Task task = new EventTask(name,priority,description, dateRange, timeRange);
+        addTask(task);
+    }
+
+    public void creatToDoTask(String name,String priority,String description, String date,String time){
+
+        OneDay oneday = new OneDay(LocalDate.parse(date));
+        OneTime onetime = new OneTime(LocalTime.parse(time));
+
+        Task task = new TodoTask(name,priority,description,oneday,onetime);
+        addTask(task);
+    }
+
 
     public void addTask(Task task){
         taskList.getTaskList().add(task);
