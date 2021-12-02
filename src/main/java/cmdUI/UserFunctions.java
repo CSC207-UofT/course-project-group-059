@@ -7,22 +7,19 @@ import task.taskController.TaskCreator;
 import task.taskUseCases.TaskTracker;
 import timeline.TimelineManager;
 import task.tasklistEntities.TaskList;
-import timeline.Timeline;
 
 import java.util.Scanner;
 
 public class UserFunctions{
     TaskList tasklist;
     TaskTracker tracker;
-    Timeline timeline;
     TimelineManager timelineManager;
 
     public UserFunctions() {
-        // TODO: Remove instances of TaskList and Timeline (Entities)
+        // TODO: Remove instances of TaskList
         this.tasklist = new TaskList();
         this.tracker = new TaskTracker(this.tasklist);
-        this.timeline = new Timeline();
-        this.timelineManager = new TimelineManager(this.timeline);
+        this.timelineManager = new TimelineManager();
     }
 
     // Begin prompt which allows user to access features
@@ -82,7 +79,7 @@ public class UserFunctions{
 
         // Call print method in respective printer classes
         if (key.equalsIgnoreCase("M")) {
-            TimelinePrinter.print(this.timeline);
+            TimelinePrinter.print(timelineManager.getTodayTimeline());
         }
         else if (key.equalsIgnoreCase("L")) {
             TaskListPrinter.print(this.tracker);

@@ -27,7 +27,7 @@ public class EditTaskDateAndTime implements EditStrategy {
             newDate.overwriteToTask(task);
         }
         if (newTime != null){
-            task.setTime(newTime);
+            newTime.overwriteToTask(task);
         }
     }
 

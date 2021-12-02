@@ -110,9 +110,9 @@ public abstract class Task{
                 ", date=" + date +
                 ", time=" + time +
                 ", remind=" + remind +
-                ", finished=" + finished.getValue() +
-                ", recurring=" + recurring.getValue() +
-                ", allDay=" + allDay.getValue() +
+                ", finished=" + finished.getBool() +
+                ", recurring=" + recurring.getBool() +
+                ", allDay=" + allDay.getBool() +
                 '}';
     }
 }

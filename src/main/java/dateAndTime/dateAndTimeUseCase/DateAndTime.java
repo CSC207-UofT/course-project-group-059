@@ -1,9 +1,16 @@
 package dateAndTime.dateAndTimeUseCase;
 
 import dateAndTime.dateAndTimeAttributes.*;
+import task.taskEntities.Task;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.time.temporal.ChronoUnit;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+
+import static java.time.temporal.ChronoUnit.HOURS;
 
 public class DateAndTime {
 
@@ -31,5 +38,25 @@ public class DateAndTime {
     }
 
 // will implement more base on the need....
+
+    //TODO: avoid cases like start is after end
+    public static List<LocalDate> datesInRange(Date date){
+        return date.getStartDate().datesUntil(date.getEndDate()).collect(Collectors.toList());
+    }
+
+    // return the time difference between start and end in hours.
+    public static List<LocalTime> hoursInRange(Time time){
+        List<LocalTime> hours = new ArrayList<>();
+
+        // return localTime between start and end in hour, not include end
+        for (int i = time.getTime().getHour(); i < time.getEndTime().getHour(); i++) {
+            String formatted = String.format("%02d", i);
+            String hour = formatted + ":00";
+            hours.add(LocalTime.parse(hour));
+        }
+
+        return hours;
+    }
+
 
 }
