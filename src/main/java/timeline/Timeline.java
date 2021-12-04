@@ -3,6 +3,7 @@ package timeline;
 import storer.Storable;
 import task.taskEntities.Task;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.time.*;
@@ -34,6 +35,15 @@ public class Timeline implements Storable {
 
     public ArrayList<Task> getAllDayList() {
         return allDayList;
+    }
+
+    public ArrayList<String> save() {
+        //TODO
+        return new ArrayList<>();
+    }
+
+    public void open(ArrayList<String> csvData) {
+        //TODO
     }
 
     @Override

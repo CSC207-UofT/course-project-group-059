@@ -19,6 +19,15 @@ public class TaskList implements Storable {
         this.taskList = taskList;
     }
 
+    public ArrayList<String> save() {
+        //TODO
+        return new ArrayList<>();
+    }
+
+    public void open(ArrayList<String> csvData) {
+        //TODO
+    }
+
     public String toString() {
         StringBuilder output = new StringBuilder("Your to-do list:");
 
