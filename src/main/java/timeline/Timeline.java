@@ -9,7 +9,7 @@ import java.time.*;
 
 
 // Thought: maybe we can simply just use array rather than arrayList.
-public class Timeline implements Storable {
+public class Timeline{
     private final LocalDate date;
     private final LinkedHashMap<LocalTime, ArrayList<Task>> timeBlocks;
     private final ArrayList<Task> allDayList;
@@ -46,7 +46,14 @@ public class Timeline implements Storable {
 
     @Override
     public String toString() {
-        StringBuilder output = new StringBuilder("Today's timeline:");
+        StringBuilder output = new StringBuilder(date +" timeline:");
+
+        if(!allDayList.isEmpty()){
+            for(Task task: allDayList){
+                output.append("\n");
+                output.append(task.getName());
+            }
+        }
 
         for(LocalTime time: timeBlocks.keySet()){
             output.append("\n");
@@ -54,7 +61,7 @@ public class Timeline implements Storable {
             output.append(":\t");
 
             for (Task task: timeBlocks.get(time)){
-                output.append(task);
+                output.append(task.getName());
                 output.append(", ");
             }
         }

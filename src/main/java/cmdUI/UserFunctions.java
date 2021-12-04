@@ -1,22 +1,18 @@
 package cmdUI;
 
 import alarm.alarmUseCase.Pomodoro;
+import controllers.TaskAndTimeController;
 import printers.TaskListPrinter;
 import printers.TimelinePrinter;
-
-import timeline.TimelineManager;
 
 import java.util.Scanner;
 
 public class UserFunctions{
-    TimelineManager timelineManager;
+    private final TaskAndTimeController controller;
 
     public UserFunctions() {
-        // TODO: Remove instances of TaskList and Timeline (Entities)
-        this.tasklist = new TaskList();
-        this.tracker = new TaskTracker(this.tasklist);
-        this.timeline = new Timeline();
-        this.timelineManager = new TimelineManager(this.timeline);
+
+        controller = new TaskAndTimeController();
 
         // Load saved CSV file if it exists
         loadCSV();
@@ -81,14 +77,13 @@ public class UserFunctions{
         String key = reader.nextLine();
 
         // Call createTask
-        if (key.equalsIgnoreCase("1")) {\
+        if (key.equalsIgnoreCase("1")) {
             TaskCreator.createTask();
         }
         else if (key.equalsIgnoreCase("2")) {
             // TODO: Implement when task editing is completed
             System.out.println("Not implemented yet");
-=======
-            TaskCreator.createTask(this.tracker);
+            TaskCreator.createTask();
         }
         else if (key.equalsIgnoreCase("2")) {
             // TODO: Implement when task editing is completed
@@ -120,17 +115,16 @@ public class UserFunctions{
 //            // TODO: Implement when suggestions are completed
 //            System.out.println("Not implemented yet");
 //        }
-=======
-        if (key.equalsIgnoreCase("1")) {
-            TimelinePrinter.print(this.timeline);
-        }
-        else if (key.equalsIgnoreCase("2")) {
-            TaskListPrinter.print(this.tracker);
-        }
-        else if (key.equalsIgnoreCase("3")) {
-            // TODO: Implement when suggestions are completed
-            System.out.println("Not implemented yet");
-        }
+//        if (key.equalsIgnoreCase("1")) {
+//            TimelinePrinter.print(this.timeline);
+//        }
+//        else if (key.equalsIgnoreCase("2")) {
+//            TaskListPrinter.print(this.tracker);
+//        }
+//        else if (key.equalsIgnoreCase("3")) {
+//            // TODO: Implement when suggestions are completed
+//            System.out.println("Not implemented yet");
+//        }
     }
 
     // Creates and starts an instance of Pomodoro

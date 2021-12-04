@@ -11,13 +11,13 @@ public class TimelineTracker {
     public TimelineTracker() {
         LocalDate today = LocalDate.now();
         if (!calender.getCalender().containsKey(today)){
-            calender.add(today,new Timeline(today));
+            calender.add(today);
         }
     }
 
     public Timeline getFromCalender(LocalDate date){
         if (!calender.getCalender().containsKey(date)){
-            calender.add(date,new Timeline(date));
+            calender.add(date);
         }
 
         return calender.get(date);
