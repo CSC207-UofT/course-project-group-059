@@ -11,7 +11,7 @@ import java.time.*;
 // Thought: maybe we can simply just use array rather than arrayList.
 public class Timeline implements Storable {
     private final LocalDate date;
-    private final LinkedHashMap<LocalTime, ArrayList<Task>> timeline;
+    private final LinkedHashMap<LocalTime, ArrayList<Task>> timeBlocks;
     private final ArrayList<Task> allDayList;
 
     //constructor and assign all the time block in to timeline
@@ -19,14 +19,14 @@ public class Timeline implements Storable {
 
         this.date = date;
 
-        timeline = new LinkedHashMap<>();
+        timeBlocks = new LinkedHashMap<>();
 
         // Add a key for each hour, mapped to empty lists
         for (int i = 0; i < 24; i++) {
             String formatted = String.format("%02d", i);
             String hour = formatted + ":00";
             ArrayList<Task> tasks = new ArrayList<>();
-            timeline.put(LocalTime.parse(hour), tasks);
+            timeBlocks.put(LocalTime.parse(hour), tasks);
         }
 
         allDayList = new ArrayList<>();
@@ -36,8 +36,8 @@ public class Timeline implements Storable {
         return date;
     }
 
-    public LinkedHashMap<LocalTime, ArrayList<Task>> getTimeline() {
-        return timeline;
+    public LinkedHashMap<LocalTime, ArrayList<Task>> getTimeBlocks() {
+        return timeBlocks;
     }
 
     public ArrayList<Task> getAllDayList() {
@@ -48,12 +48,12 @@ public class Timeline implements Storable {
     public String toString() {
         StringBuilder output = new StringBuilder("Today's timeline:");
 
-        for(LocalTime time: timeline.keySet()){
+        for(LocalTime time: timeBlocks.keySet()){
             output.append("\n");
             output.append(time.toString());
             output.append(":\t");
 
-            for (Task task: timeline.get(time)){
+            for (Task task: timeBlocks.get(time)){
                 output.append(task);
                 output.append(", ");
             }
