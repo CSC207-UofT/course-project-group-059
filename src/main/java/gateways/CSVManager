@@ -3,7 +3,6 @@ package gateways;
 import storer.Storable;
 
 import java.io.File;
-import java.util.HashMap;
 
 public class CSVManager {
     //types used for read()
