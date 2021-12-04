@@ -3,6 +3,7 @@ package editStrategies;
 import task.taskEntities.Task;
 import dateAndTime.dateAndTimeAttributes.Date;
 import dateAndTime.dateAndTimeAttributes.Time;
+import timeline.TimelineManager;
 
 public class EditTaskDateAndTime implements EditStrategy {
     private Date newDate;
@@ -27,7 +28,7 @@ public class EditTaskDateAndTime implements EditStrategy {
             newDate.overwriteToTask(task);
         }
         if (newTime != null){
-            task.setTime(newTime);
+            newTime.overwriteToTask(task);
         }
     }
 

@@ -72,7 +72,7 @@ public class TaskEditorTest {
 
         EventTask expected = new EventTask(name, priority,description,dateRange,timeRange);
 
-        Assertions.assertNotEquals(expected.getAllDay().getValue(), eventTask.getAllDay().getValue());
+        Assertions.assertNotEquals(expected.getAllDay().getBool(), eventTask.getAllDay().getBool());
     }
     @Test
     void editFinishedTest(){
@@ -82,7 +82,7 @@ public class TaskEditorTest {
 
         EventTask expected = new EventTask(name, priority,description,dateRange,timeRange);
 
-        Assertions.assertNotEquals(expected.getFinished().getValue(), eventTask.getFinished().getValue());
+        Assertions.assertNotEquals(expected.getFinished().getBool(), eventTask.getFinished().getBool());
     }
     @Test
     void editRecurringTest(){
@@ -92,7 +92,7 @@ public class TaskEditorTest {
 
         EventTask expected = new EventTask(name, priority,description,dateRange,timeRange);
 
-        Assertions.assertNotEquals(expected.getRecurring().getValue(), eventTask.getRecurring().getValue());
+        Assertions.assertNotEquals(expected.getRecurring().getBool(), eventTask.getRecurring().getBool());
     }
 
     @Test

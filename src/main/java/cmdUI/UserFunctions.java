@@ -1,22 +1,14 @@
 package cmdUI;
 
 import alarm.alarmUseCase.Pomodoro;
-import gateways.CSVManager;
 import printers.TaskListPrinter;
 import printers.TimelinePrinter;
 
-import task.taskController.TaskCreator;
-import task.taskUseCases.TaskTracker;
 import timeline.TimelineManager;
-import task.tasklistEntities.TaskList;
-import timeline.Timeline;
 
 import java.util.Scanner;
 
 public class UserFunctions{
-    TaskList tasklist;
-    TaskTracker tracker;
-    Timeline timeline;
     TimelineManager timelineManager;
 
     public UserFunctions() {
@@ -89,7 +81,13 @@ public class UserFunctions{
         String key = reader.nextLine();
 
         // Call createTask
-        if (key.equalsIgnoreCase("1")) {
+        if (key.equalsIgnoreCase("1")) {\
+            TaskCreator.createTask();
+        }
+        else if (key.equalsIgnoreCase("2")) {
+            // TODO: Implement when task editing is completed
+            System.out.println("Not implemented yet");
+=======
             TaskCreator.createTask(this.tracker);
         }
         else if (key.equalsIgnoreCase("2")) {
@@ -110,7 +108,19 @@ public class UserFunctions{
         Scanner reader = new Scanner(System.in);
         String key = reader.nextLine();
 
+        // TODO Create Presenters so the UnserFunction dont have to call  time line and tracker
         // Call print method in respective printer classes
+//        if (key.equalsIgnoreCase("1")) {
+//            TimelinePrinter.print(this.timeline);
+//        }
+//        else if (key.equalsIgnoreCase("2")) {
+//            TaskListPrinter.print(this.tracker);
+//        }
+//        else if (key.equalsIgnoreCase("3")) {
+//            // TODO: Implement when suggestions are completed
+//            System.out.println("Not implemented yet");
+//        }
+=======
         if (key.equalsIgnoreCase("1")) {
             TimelinePrinter.print(this.timeline);
         }
