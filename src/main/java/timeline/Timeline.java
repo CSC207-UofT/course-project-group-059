@@ -8,9 +8,8 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.time.*;
 
-
 // Thought: maybe we can simply just use array rather than arrayList.
-public class Timeline implements Storable {
+public class Timeline {
     private final LinkedHashMap<LocalTime, ArrayList<Task>> timeline;
     private final ArrayList<Task> allDayList;
 
@@ -35,15 +34,6 @@ public class Timeline implements Storable {
 
     public ArrayList<Task> getAllDayList() {
         return allDayList;
-    }
-
-    public ArrayList<String> save() {
-        //TODO
-        return new ArrayList<>();
-    }
-
-    public void open(ArrayList<String> csvData) {
-        //TODO
     }
 
     @Override

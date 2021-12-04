@@ -68,13 +68,11 @@ public class UserFunctions{
     }
 
     public void loadCSV() {
-        // TODO: Implement when CSVManager is completed
-        // CSVManager.load();
+        CSVManager.read(this.tasklist);
     }
 
     public void saveCSV() {
-        // TODO: Implement when CSVManager is completed
-        // CSVManager.save(this.tracker, this.timelineManager);
+        CSVManager.write(this.tasklist);
     }
 
     // Ask user what to do, and access the corresponding method in the TaskTracker
