@@ -1,59 +1,94 @@
 package timeline;
 
+import dateAndTime.dateAndTimeAttributes.*;
+import dateAndTime.dateAndTimeUseCase.DateAndTime;
 import task.taskEntities.Task;
 import task.taskUseCases.TaskObserver;
 import task.tasklistEntities.TaskList;
-import timeline.Timeline;
+
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.util.ArrayList;
+
 
 public class TimelineManager  implements TaskObserver {
-    Timeline timeline;
 
-    public TimelineManager(Timeline timeline) {
-        this.timeline = timeline;
+    private final TimelineTracker timelineTracker;
+
+    public TimelineManager() {
+        this.timelineTracker = new TimelineTracker();
     }
-
-    // TaskObserver's methods
-    @Override
-    public void simpleRefresh(Task task) {
-
-    }
-
-    @Override
-    public void refresh(TaskList taskList) {
-
-    }
-
-    // Case1: eventTask start and end today, one hr
-    // Case2: eventTask start and end today two hrs
-    // Case3: eventTask start and end today, all days.
-    // Case4: eventTask start today and end tmr, all days
-    // Case5: eventTask start today and end tmr, not all days
 
     //NOTE: how to deal with repeating task is not decided yet.
+    //Maybe the observer will update the repeating task to timeline every day
 
-    // same day or not, all day or not, repeated or not
-
-
-    public void addToTime(Task task){
-
+    //TODO: TEST these
+    public void addToTimeLine(Task task){
+        // deal with all day task
+        // Case1: eventTask start and end today, all days.
+        // Case2: eventTask start today and end tmr, all days
+        if(task.getAllDay().getBool()){
+            for(LocalDate date: DateAndTime.datesInRange(task.getDate()) ){
+                timelineTracker.getFromCalender(date).getAllDayList().add(task);
+            }
+        }
+        // deal with task not for all day and not repeating.
+        // Case3: eventTask start and end today, one hr
+        // Case4: eventTask start and end today two hrs
+        // Case5: eventTask start today and end tmr, not all days
+        else{
+            //Find the dates in the range
+            for(LocalDate date: DateAndTime.datesInRange(task.getDate()) ){
+                //Call the corresponding TimeLine
+                Timeline timeline = timelineTracker.getFromCalender(date);
+                //Find the time blocks in the range
+                for (LocalTime time : DateAndTime.hoursInRange(task.getTime())) {
+                    //Put the task in to each time block
+                    timeline.getTimeBlocks().computeIfAbsent(time, k -> new ArrayList<>()).add(task);
+                }
+            }
+        }
     }
 
     // delete and Task from the timeline
-    public void deleteFromTime(Task task){
-
+    public void deleteFromTimeLine(Task task){
+        if(task.getAllDay().getBool()){
+            for(LocalDate date: DateAndTime.datesInRange(task.getDate()) ){
+                timelineTracker.getFromCalender(date).getAllDayList().remove(task);
+            }
+        }
+        else{
+            //Find the dates in the range
+            for(LocalDate date: DateAndTime.datesInRange(task.getDate()) ){
+                //Call the corresponding TimeLine
+                Timeline timeline = timelineTracker.getFromCalender(date);
+                //Find the time blocks in the range
+                for (LocalTime time : DateAndTime.hoursInRange(task.getTime())) {
+                    //Put the task in to each time block
+                    timeline.getTimeBlocks().computeIfAbsent(time, k -> new ArrayList<>()).remove(task);
+                }
+            }
+        }
     }
 
-    //TODO deal with time with modified time and date
-    public void shiftToTime(Task task){
 
+    public ArrayList<Task> getFromTimeline(LocalDate date, LocalTime time){
+        return timelineTracker.getFromCalender(date).getTimeBlocks().get(time);
     }
 
 
+    //TODO TEST THESE
 
-    // Return true if there are two tasks in the same time block and there time are overlapping
-//    public static boolean checkOverlap(abstractClasses.Task task1, Task task2){
-//
-//    }
+    // TaskObserver's methods
+    @Override
+    public void refresh(TaskList taskList, Task task) {
+        if(taskList.getTaskList().contains(task)){
+            addToTimeLine(task);
+        }
+        else {
+            deleteFromTimeLine(task);
+        }
+    }
 
 
 

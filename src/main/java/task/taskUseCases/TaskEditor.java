@@ -10,6 +10,10 @@ public class TaskEditor{
         strategy.edit(task);
     }
 
+    public static void creatSubTask(Task task, String name, String priority, String description){
+        addSubTask(task, new SubTask(name,priority,description));
+    }
+
     public static void addSubTask(Task task, SubTask subTask){
         task.getSubTasks().add(subTask);
     }

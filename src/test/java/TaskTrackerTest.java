@@ -22,7 +22,7 @@ public class TaskTrackerTest {
     }
 
     void TaskListTest(){
-        TaskTracker tracker = new TaskTracker(taskList);
+        TaskTracker tracker = new TaskTracker();
 
         Task task = new SubTask("name","priority","description");
 

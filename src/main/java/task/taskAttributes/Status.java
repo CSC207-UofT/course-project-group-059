@@ -1,6 +1,5 @@
 package task.taskAttributes;
 
-import editStrategies.EditTaskStatus;
 import task.taskEntities.Task;
 
 public abstract class Status {
@@ -19,12 +18,12 @@ public abstract class Status {
         this.value = newValue;
     }
 
-    public void update(Status newStatus){this.value = newStatus.getValue();}
+    public void update(Status newStatus){this.value = newStatus.getBool();}
 
     // part of the strategy pattern
     public void overwriteToTask(Task task){}
 
-    public boolean getValue() {
+    public boolean getBool() {
         return value;
     }
 }

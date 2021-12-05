@@ -16,19 +16,16 @@ import java.util.*;
 public class TaskTracker {
 
 //Task Tracker implements Observer design pattern
-    private final List<TaskObserver> observerList = new ArrayList<>();
+    private final static List<TaskObserver> observerList = new ArrayList<>();
 
-    private final TaskList taskList;
+    private final static TaskList taskList = new TaskList();
 
     //Constructor
-    public TaskTracker(TaskList tasklist, TaskObserver... observers) {
-        this.taskList = tasklist;
+    public TaskTracker(TaskObserver... observers) {
         Collections.addAll(observerList, observers);
     }
 
-    public TaskTracker(TaskList tasklist) {
-        this.taskList = tasklist;
-    }
+    public TaskTracker() {}
 
     public TaskList getTaskList() {
         return taskList;
@@ -47,18 +44,9 @@ public class TaskTracker {
         return observerList;
     }
 
-    // auto update to the observer
-    private void simpleRefreshObserver(Task task){
-        if(!observerList.isEmpty()){
-            for(TaskObserver observer: observerList){
-                observer.simpleRefresh(task);
-            }
-        }
-    }
-
-    private void refreshObserver(){
+    private void refreshObserver(Task task){
         for(TaskObserver observer: observerList){
-            observer.refresh(taskList);
+            observer.refresh(taskList, task);
         }
     }
 
@@ -67,8 +55,10 @@ public class TaskTracker {
 
     public void creatEventTask(String name,String priority,String description,
                                String startDate,String startTime, String endDate, String endTime){
+
         DateRange dateRange = new DateRange(LocalDate.parse(startDate), LocalDate.parse(endDate));
         TimeRange timeRange = new TimeRange(LocalTime.parse(startTime), LocalTime.parse(endTime));
+
         Task task = new EventTask(name,priority,description, dateRange, timeRange);
         addTask(task);
     }
@@ -82,15 +72,14 @@ public class TaskTracker {
         addTask(task);
     }
 
-
     public void addTask(Task task){
         taskList.getTaskList().add(task);
-        simpleRefreshObserver(task);
+        refreshObserver(task);
     }
 
     public void deleteTask(Task task){
         taskList.getTaskList().remove(task);
-        simpleRefreshObserver(task);
+        refreshObserver(task);
     }
 
 
