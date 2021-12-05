@@ -1,0 +1,6 @@
+Your to-do list:
+ÅTask{name='Math Work', priority='N/A', description='N/A', evaluation='N/A', subTasks=null, date=DateRange{startDate=2021-10-17, endDate=2012-06-18}, time=TimeRange{startTime=14:00, endTime=15:00}, remind=null, finished=false, recurring=false, allDay=false}
+ÅTask{name='Math Work', priority='N/A', description='N/A', evaluation='N/A', subTasks=null, date=DateRange{startDate=2021-10-17, endDate=2021-10-17}, time=TimeRange{startTime=14:00, endTime=15:00}, remind=null, finished=false, recurring=false, allDay=false}
+ÅTask{name='Math Work', priority='N/A', description='N/A', evaluation='N/A', subTasks=null, date=DateRange{startDate=2021-10-17, endDate=2021-12-16}, time=TimeRange{startTime=14:00, endTime=15:00}, remind=null, finished=false, recurring=false, allDay=false}
+ÅTask{name='Math Work', priority='N/A', description='N/A', evaluation='N/A', subTasks=null, date=DateRange{startDate=2021-10-17, endDate=2025-05-23}, time=TimeRange{startTime=14:00, endTime=15:00}, remind=null, finished=false, recurring=false, allDay=false}
+
