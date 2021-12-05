@@ -2,6 +2,7 @@ package controllers;
 
 
 import dateAndTime.dateAndTimeAttributes.DateRange;
+import dateAndTime.dateAndTimeAttributes.OneDay;
 import dateAndTime.dateAndTimeAttributes.TimeRange;
 import editStrategies.*;
 import task.taskAttributes.*;
@@ -22,13 +23,22 @@ public class TaskAndTimeController {
         taskTracker = new TaskTracker(timelineManager);
     }
 
+    public TimelineManager getTimelineManager() {
+        return timelineManager;
+    }
+
+    public TaskTracker getTaskTracker() {
+        return taskTracker;
+    }
+
     // select task form taskList
     public Task selectFromTaskList(int index){
         return taskTracker.getTaskList().getTaskList().get(index);
     }
+
     // select task from timeline
     public Task selectFromTimeline(String date, String time, int index){
-        return timelineManager.getFromTimeline(LocalDate.parse(date),LocalTime.parse(time)).get(index);
+        return timelineManager.getBlockFromTimeline(LocalDate.parse(date),LocalTime.parse(time)).get(index);
     }
 
     // create and add task
@@ -43,7 +53,7 @@ public class TaskAndTimeController {
 
     //add task to from taskList to Timeline manually by index
     public void addFromTaskListToTimeline(int index){
-        taskTracker.addTask(selectFromTaskList(index));
+        timelineManager.addToTimeLine(selectFromTaskList(index));
     }
 
     public void addToTimeline(Task task){
@@ -61,7 +71,7 @@ public class TaskAndTimeController {
     }
 
     public void removeTaskFromTimeline(String date, String time, int index){
-        Task task = timelineManager.getFromTimeline(LocalDate.parse(date),LocalTime.parse(time)).get(index);
+        Task task = timelineManager.getBlockFromTimeline(LocalDate.parse(date),LocalTime.parse(time)).get(index);
         timelineManager.deleteFromTimeLine(task);
     }
 
@@ -96,12 +106,21 @@ public class TaskAndTimeController {
     }
 
     // The time editing will remove the task form timeline first then put it back
-    public void editEventTaskDate(Task task, String newStartDate, String newEndDate){
+    public void editDate(Task task, String newStartDate, String newEndDate){
             removeTaskFromTimeline(task);
             DateRange newDateRange = new DateRange(LocalDate.parse(newStartDate), LocalDate.parse(newEndDate));
             TaskEditor.editTask(task, new EditTaskDateAndTime(newDateRange));
             addToTimeline(task);
     }
+
+    public void editDate(Task task, String newDate){
+        removeTaskFromTimeline(task);
+        OneDay date = new OneDay(LocalDate.parse(newDate));
+        TaskEditor.editTask(task, new EditTaskDateAndTime(date));
+        addToTimeline(task);
+    }
+
+
     public void editTime(Task task, String newStartTime, String newEndTime){
             removeTaskFromTimeline(task);
             TimeRange newTimeRange = new TimeRange(LocalTime.parse(newStartTime), LocalTime.parse(newEndTime));

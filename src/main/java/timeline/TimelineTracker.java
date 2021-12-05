@@ -11,13 +11,14 @@ public class TimelineTracker {
     public TimelineTracker() {
         LocalDate today = LocalDate.now();
         if (!calender.getCalender().containsKey(today)){
-            calender.add(today,new Timeline(today));
+            calender.add(today);
         }
     }
 
+    // This will create a new timeline if there is
     public Timeline getFromCalender(LocalDate date){
         if (!calender.getCalender().containsKey(date)){
-            calender.add(date,new Timeline(date));
+            calender.add(date);
         }
 
         return calender.get(date);
@@ -26,5 +27,9 @@ public class TimelineTracker {
     //TODO a controller for timeline
     public Timeline getTodayTimeline(){
         return calender.get(LocalDate.now());
+    }
+
+    public Calender getCalender(){
+        return calender;
     }
 }

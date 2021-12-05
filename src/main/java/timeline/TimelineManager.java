@@ -1,6 +1,5 @@
 package timeline;
 
-import dateAndTime.dateAndTimeAttributes.*;
 import dateAndTime.dateAndTimeUseCase.DateAndTime;
 import task.taskEntities.Task;
 import task.taskUseCases.TaskObserver;
@@ -29,7 +28,7 @@ public class TimelineManager  implements TaskObserver {
         // Case2: eventTask start today and end tmr, all days
         if(task.getAllDay().getBool()){
             for(LocalDate date: DateAndTime.datesInRange(task.getDate()) ){
-                timelineTracker.getFromCalender(date).getAllDayList().add(task);
+                timelineTracker.getFromCalender(date).addToAllDayList(task);
             }
         }
         // deal with task not for all day and not repeating.
@@ -44,7 +43,7 @@ public class TimelineManager  implements TaskObserver {
                 //Find the time blocks in the range
                 for (LocalTime time : DateAndTime.hoursInRange(task.getTime())) {
                     //Put the task in to each time block
-                    timeline.getTimeBlocks().computeIfAbsent(time, k -> new ArrayList<>()).add(task);
+                    timeline.addToTimeBlocks(time,task);
                 }
             }
         }
@@ -54,7 +53,7 @@ public class TimelineManager  implements TaskObserver {
     public void deleteFromTimeLine(Task task){
         if(task.getAllDay().getBool()){
             for(LocalDate date: DateAndTime.datesInRange(task.getDate()) ){
-                timelineTracker.getFromCalender(date).getAllDayList().remove(task);
+                timelineTracker.getFromCalender(date).removeFromAllDayList(task);
             }
         }
         else{
@@ -64,18 +63,30 @@ public class TimelineManager  implements TaskObserver {
                 Timeline timeline = timelineTracker.getFromCalender(date);
                 //Find the time blocks in the range
                 for (LocalTime time : DateAndTime.hoursInRange(task.getTime())) {
-                    //Put the task in to each time block
-                    timeline.getTimeBlocks().computeIfAbsent(time, k -> new ArrayList<>()).remove(task);
+                    //remove the task in to each time block
+                    timeline.removeFromTime(time, task);
+                }
+                // Remove not today empty timeline
+                if(timelineTracker.getCalender().get(date).isEmpty() &&
+                        !timelineTracker.getCalender().get(date).isToday()){
+                    timelineTracker.getCalender().remove(date);
                 }
             }
         }
     }
 
 
-    public ArrayList<Task> getFromTimeline(LocalDate date, LocalTime time){
-        return timelineTracker.getFromCalender(date).getTimeBlocks().get(time);
+    public ArrayList<Task> getBlockFromTimeline(LocalDate date, LocalTime time){
+        return timelineTracker.getFromCalender(date).getTimeBlock(time);
     }
 
+    public Timeline getTimeLine(LocalDate date){
+        return timelineTracker.getFromCalender(date);
+    }
+
+    public TimelineTracker getTimelineTracker() {
+        return timelineTracker;
+    }
 
     //TODO TEST THESE
 
