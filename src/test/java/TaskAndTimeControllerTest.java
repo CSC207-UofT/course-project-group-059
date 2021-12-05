@@ -62,41 +62,12 @@ public class TaskAndTimeControllerTest {
 
         Task expected = new EventTask("newName",priority,description,dateRange,timeRange);
 
+
         Task output = controller.selectFromTimeline(startDate,startTime,0);
 
-        Assertions.assertEquals(expected.toString(),output.toString());
-    }
-
-    @Test
-    public void editTaskDateAndTime(){
-        TaskAndTimeController controller = new TaskAndTimeController();
-
-        String newStartDate = "2021-12-20";
-        String newStartTime = "11:00";
-        String newEndDate = "2021-12-22";
-        String newEndTime = "12:00";
-
-        DateRange newDateRange = new DateRange(LocalDate.parse(newStartDate), LocalDate.parse(newEndDate));
-        TimeRange newTimeRange = new TimeRange(LocalTime.parse(newStartTime), LocalTime.parse(newEndTime));
-
-
-        controller.createTask(name,priority,description,startDate,startTime,endDate,endTime);
-
-        Task expected = new EventTask(name,priority,description,newDateRange,newTimeRange);
-
-        Timeline expectedTimeline = new Timeline(newDateRange.getStartDate());
-        expectedTimeline.addToTimeBlocks(newTimeRange.getStartTime(),expected);
-
-
-
-        controller.editDate(controller.selectFromTaskList(0),newStartDate,newEndDate);
-        controller.editTime(controller.selectFromTaskList(0),newStartTime,newEndTime);
-
-        Task output = controller.selectFromTaskList(0);
-        Timeline outputTimeline = controller.getTimelineManager().getTimeLine(output.getDate().getStartDate());
+        System.out.println(expected);
+        System.out.println(output);
 
         Assertions.assertEquals(expected.toString(),output.toString());
-        Assertions.assertEquals(expectedTimeline.toString(),outputTimeline.toString());
-
     }
 }

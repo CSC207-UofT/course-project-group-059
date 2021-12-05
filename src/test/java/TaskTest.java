@@ -29,14 +29,14 @@ public class TaskTest {
 
     @Test
     public void TestEventTask(){
-
+        Task newTask = new EventTask(name,priority,description,dateRange,timeRange);
 
         String expected = "Task{name='Math Work', priority='N/A', description='N/A', evaluation='N/A', subTasks=null, " +
                 "date=DateRange{startDate=2021-10-17, endDate=2021-10-17}, time=TimeRange{startTime=14:00, endTime=15:00}, "+
                 "remind=null, finished=false, recurring=false, allDay=false}";
 
 
-
+        Assertions.assertEquals(expected, newTask.toString());
     }
     @Test
     public void TestTodoTask(){

@@ -28,8 +28,8 @@ public class TimelineTackerTest {
         LocalDate date = LocalDate.parse("2021-10-17");
         tracker.getFromCalender(date);
         String expected = "calender:\n" +
-                "- 2021-10-17\n" +
-                "- 2021-12-04";
+                "- 2021-10-17\n- " +
+                LocalDate.now();
 
         Assertions.assertEquals(expected, tracker.getCalender().toString());
     }
