@@ -18,7 +18,7 @@ public class TaskTracker {
 //Task Tracker implements Observer design pattern
     private final List<TaskObserver> observerList = new ArrayList<>();
 
-    private final TaskList taskList;
+    private TaskList taskList = new TaskList();
 
     //Constructor
     public TaskTracker(TaskList tasklist, TaskObserver... observers) {
@@ -28,6 +28,9 @@ public class TaskTracker {
 
     public TaskTracker(TaskList tasklist) {
         this.taskList = tasklist;
+    }
+    public TaskTracker(){
+
     }
 
     public TaskList getTaskList() {
