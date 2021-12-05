@@ -8,12 +8,8 @@ import printers.TimelinePrinter;
 import java.util.Scanner;
 
 public class UserFunctions{
-    private final TaskAndTimeController controller;
 
     public UserFunctions() {
-
-        controller = new TaskAndTimeController();
-
         // Load saved CSV file if it exists
         loadCSV();
 
@@ -85,7 +81,7 @@ public class UserFunctions{
             System.out.println("Not implemented yet");
             TaskCreator.createTask();
         }
-        else if (key.equalsIgnoreCase("2")) {
+        else if (key.equalsIgnoreCase("3")) {
             // TODO: Implement when task editing is completed
             System.out.println("Not implemented yet");
         }

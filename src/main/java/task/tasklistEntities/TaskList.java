@@ -19,6 +19,7 @@ public class TaskList implements Storable {
         this.taskList = taskList;
     }
 
+    @Override
     public String toString() {
         StringBuilder output = new StringBuilder("Your to-do list:");
 
@@ -27,7 +28,10 @@ public class TaskList implements Storable {
             output.append("(Currently Empty)");
         }
         else {
+            int i = 0;
             for (Task task: getTaskList()) {
+                i++;
+                output.append(i).append(". ");
                 output.append(task);
                 output.append("\n");
             }

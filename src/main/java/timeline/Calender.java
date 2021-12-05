@@ -4,7 +4,7 @@ import task.taskEntities.Task;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.LinkedHashMap;
+import java.util.*;
 
 public class Calender {
     private final LinkedHashMap<LocalDate, Timeline> calender;
@@ -29,13 +29,19 @@ public class Calender {
         return this.calender;
     }
 
+
     @Override
     public String toString() {
+        // Making sure that the date will be print in order.
+        List<LocalDate> dateInOrder = new ArrayList<>(calender.keySet());
+
+        Collections.sort(dateInOrder);
+
         StringBuilder output = new StringBuilder("calender:");
 
-        for(Timeline timeline: calender.values()){
+        for(LocalDate date: dateInOrder) {
             output.append("\n");
-            output.append("- ").append(timeline.getDate());
+            output.append("- ").append(calender.get(date).getDate());
         }
 
         return output.toString();

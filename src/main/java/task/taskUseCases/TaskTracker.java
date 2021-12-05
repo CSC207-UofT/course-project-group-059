@@ -14,7 +14,6 @@ import java.time.LocalTime;
 import java.util.*;
 
 public class TaskTracker {
-
 //Task Tracker implements Observer design pattern
     private final static List<TaskObserver> observerList = new ArrayList<>();
 
@@ -81,7 +80,5 @@ public class TaskTracker {
         taskList.getTaskList().remove(task);
         refreshObserver(task);
     }
-
-
 
 }
