@@ -23,7 +23,7 @@ public class TaskList implements Storable {
     public void setTaskList(List<Task> taskList) {
         this.taskList = taskList;
     }
-
+  
     public ArrayList<String> save() {
         ArrayList<String> z = new ArrayList<>();
 
@@ -58,7 +58,8 @@ public class TaskList implements Storable {
 
         this.setTaskList(newList);
     }
-
+  
+    @Override
     public String toString() {
         StringBuilder output = new StringBuilder("Your to-do list:");
 
@@ -67,7 +68,10 @@ public class TaskList implements Storable {
             output.append("(Currently Empty)");
         }
         else {
+            int i = 0;
             for (Task task: getTaskList()) {
+                i++;
+                output.append(i).append(". ");
                 output.append(task);
                 output.append("\n");
             }

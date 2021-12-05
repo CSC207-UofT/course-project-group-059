@@ -35,9 +35,8 @@ public class TaskTest {
                 "date=DateRange{startDate=2021-10-17, endDate=2021-10-17}, time=TimeRange{startTime=14:00, endTime=15:00}, "+
                 "remind=null, finished=false, recurring=false, allDay=false}";
 
+
         Assertions.assertEquals(expected, newTask.toString());
-
-
     }
     @Test
     public void TestTodoTask(){

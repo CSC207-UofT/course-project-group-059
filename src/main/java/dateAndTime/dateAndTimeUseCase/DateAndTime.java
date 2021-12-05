@@ -39,9 +39,11 @@ public class DateAndTime {
 
 // will implement more base on the need....
 
-    //TODO: avoid cases like start is after end
+    //TODO: avoid cases like start is after end, make a reverse() method, consider cases with date and time
     public static List<LocalDate> datesInRange(Date date){
-        return date.getStartDate().datesUntil(date.getEndDate()).collect(Collectors.toList());
+        List<LocalDate> dates = date.getStartDate().datesUntil(date.getEndDate()).collect(Collectors.toList());
+        dates.add(date.getEndDate());
+        return dates;
     }
 
     // return the time difference between start and end in hours.
@@ -49,7 +51,7 @@ public class DateAndTime {
         List<LocalTime> hours = new ArrayList<>();
 
         // return localTime between start and end in hour, not include end
-        for (int i = time.getTime().getHour(); i < time.getEndTime().getHour(); i++) {
+        for (int i = time.getStartTime().getHour(); i < time.getEndTime().getHour(); i++) {
             String formatted = String.format("%02d", i);
             String hour = formatted + ":00";
             hours.add(LocalTime.parse(hour));
