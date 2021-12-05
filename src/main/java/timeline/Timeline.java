@@ -11,7 +11,7 @@ import java.time.*;
 // Thought: maybe we can simply just use array rather than arrayList.
 public class Timeline {
     private final LocalDate date;
-    private final LinkedHashMap<LocalTime, ArrayList<Task>> timeline;
+    private final LinkedHashMap<LocalTime, ArrayList<Task>> timeBlocks;
     private final ArrayList<Task> allDayList;
 
     //constructor and assign all the time block in to timeline
