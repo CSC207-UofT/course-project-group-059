@@ -3,14 +3,14 @@ package timeline;
 import storer.Storable;
 import task.taskEntities.Task;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.time.*;
 import java.util.List;
 
+public class Timeline {
 
-// Thought: maybe we can simply just use array rather than arrayList.
-public class Timeline{
     private final LocalDate date;
     private final LinkedHashMap<LocalTime, ArrayList<Task>> timeBlocks;
     private final ArrayList<Task> allDayList;
