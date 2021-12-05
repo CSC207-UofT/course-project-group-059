@@ -10,6 +10,7 @@ import java.time.*;
 
 // Thought: maybe we can simply just use array rather than arrayList.
 public class Timeline {
+    private final LocalDate date;
     private final LinkedHashMap<LocalTime, ArrayList<Task>> timeline;
     private final ArrayList<Task> allDayList;
 
