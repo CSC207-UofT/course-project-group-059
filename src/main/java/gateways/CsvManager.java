@@ -5,7 +5,7 @@ import storer.Storable;
 import java.io.*;
 import java.util.ArrayList;
 
-public class CSVManager {
+public class CsvManager {
     public static void read(Storable s) {
         //reads .csv file and saves it as a Storable object
         try {
