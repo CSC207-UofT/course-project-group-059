@@ -7,6 +7,6 @@ public class TaskListPrinter extends Printer {
     public static void print(TaskTracker tracker) {
         // Call toString in the TaskList
         TaskList tasklist = tracker.getTaskList();
-        System.out.println(tasklist.toString());
+        System.out.println(tasklist);
     }
 }

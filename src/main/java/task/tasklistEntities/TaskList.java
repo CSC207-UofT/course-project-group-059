@@ -37,7 +37,7 @@ public class TaskList implements Storable {
                     + task.getDate().getStartDate().toString() + ","
                     + task.getDate().getEndDate().toString() + ","
                     + task.getTime().getStartTime().toString() + ","
-                    + task.getTime().getEndTime().toString());
+                    + task.getTime().getEndTime().toString() + "\n");
         }
 
         return z;
@@ -49,11 +49,13 @@ public class TaskList implements Storable {
         for (String line: csvData) {
             String[] res = line.split(",");
 
-            DateRange dateRange = new DateRange(LocalDate.parse(res[6]), LocalDate.parse(res[7]));
-            TimeRange timeRange = new TimeRange(LocalTime.parse(res[8]), LocalTime.parse(res[9]));
-            EventTask task = new EventTask(res[0], res[1], res[2], dateRange, timeRange);
+            if (res.length > 1) {
+                DateRange dateRange = new DateRange(LocalDate.parse(res[6]), LocalDate.parse(res[7]));
+                TimeRange timeRange = new TimeRange(LocalTime.parse(res[8]), LocalTime.parse(res[9]));
+                EventTask task = new EventTask(res[0], res[1], res[2], dateRange, timeRange);
 
-            newList.add(task);
+                newList.add(task);
+            }
         }
 
         this.setTaskList(newList);

@@ -2,6 +2,8 @@ package cmdUI;
 
 import alarm.alarmUseCase.Pomodoro;
 import controllers.TaskAndTimeController;
+import gateways.CsvManager;
+import printers.SuggestionPrinter;
 import printers.TaskListPrinter;
 import printers.TimelinePrinter;
 
@@ -12,14 +14,17 @@ public class UserFunctions{
     private final TaskAndTimeController controller;
 
     public UserFunctions() {
-
         controller = new TaskAndTimeController();
+    }
 
+    // Load CSV and print opening message
+    public void startUp() {
         // Load saved CSV file if it exists
         loadCSV();
 
         System.out.println("Welcome back!");
         System.out.println("What would you like to do?");
+        mainMenu();
     }
 
     // Begin prompt which allows user to access features
@@ -27,7 +32,7 @@ public class UserFunctions{
         String msg = "\n1: Manage tasks" +
                 "\n2: Print information" +
                 "\n3: Start Pomodoro timer" +
-                "\n4: Save and exit program" +
+                "\nOther: Save and exit program" +
                 "\nType the corresponding number: ";
 
         // Repeat message until user chooses to exit
@@ -57,18 +62,19 @@ public class UserFunctions{
     }
 
     public void loadCSV() {
-        CSVManager.read(this.tasklist);
+        CsvManager.read(controller.getTaskTracker().getTaskList());
     }
 
     public void saveCSV() {
-        CSVManager.write(this.tasklist);
+        CsvManager.write(controller.getTaskTracker().getTaskList());
     }
 
     // Ask user what to do, and access the corresponding method in the TaskTracker
     public void manageTask(){
         String msg = "\n1: Create and add a task" +
                 "\n2: Edit tasks" +
-                "\n3: Return to main menu";
+                "\nOther: Return to main menu" +
+                "\nType the corresponding number: ";
 
         System.out.println(msg);
 
@@ -79,14 +85,9 @@ public class UserFunctions{
         if (key.equalsIgnoreCase("1")) {
             TaskCreator.createTask();
         }
+        // Use editing methods in TaskAndTimeController
         else if (key.equalsIgnoreCase("2")) {
-            // TODO: Implement when task editing is completed
-            System.out.println("Not implemented yet");
-            TaskCreator.createTask();
-        }
-        else if (key.equalsIgnoreCase("3")) {
-            // TODO: Implement when task editing is completed
-            System.out.println("Not implemented yet");
+            TaskEditInUI.editTask(controller);
         }
     }
 
@@ -95,7 +96,8 @@ public class UserFunctions{
         String msg = "\n1: Show timeline" +
                 "\n2: Show to-do list" +
                 "\n3: Show suggestion list" +
-                "\n4: Return to main menu";
+                "\nOther: Return to main menu" +
+                "\nType the corresponding number: ";
 
         System.out.println(msg);
 
@@ -110,8 +112,7 @@ public class UserFunctions{
             TaskListPrinter.print(controller.getTaskTracker().getTaskList());
         }
         else if (key.equalsIgnoreCase("3")) {
-            // TODO: Implement when suggestions are completed
-            System.out.println("Not implemented yet");
+            SuggestionPrinter.print(controller.getTaskTracker());
         }
     }
 
@@ -121,7 +122,7 @@ public class UserFunctions{
         int shortDur = 5;
         int longDur = 20;
         int workDur = 25;
-        Pomodoro pomodoro = new Pomodoro(workIntervals, shortDur, longDur, workDur);
         System.out.println("Pomodoro started.");
+        Pomodoro pomodoro = new Pomodoro(workIntervals, shortDur, longDur, workDur);
     }
 }
