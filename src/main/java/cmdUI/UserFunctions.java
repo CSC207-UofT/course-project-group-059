@@ -1,31 +1,26 @@
 package cmdUI;
 
 import alarm.alarmUseCase.Pomodoro;
-import controllers.Controller;
-import gateways.CSVManager;
+import controllers.TaskAndTimeController;
+import gateways.CsvManager;
 import printers.SuggestionPrinter;
 import printers.TaskListPrinter;
 import printers.TimelinePrinter;
 
-import java.io.File;
 import java.time.LocalDate;
 import java.util.Scanner;
 
 public class UserFunctions{
-    private final Controller controller;
+    private final TaskAndTimeController controller;
 
     public UserFunctions() {
-        controller = new Controller();
+        controller = new TaskAndTimeController();
     }
-    
+
     // Load CSV and print opening message
     public void startUp() {
-        File file = new File(System.getProperty("user.dir") +
-                "\\data\\Tasks.csv");
         // Load saved CSV file if it exists
-        if(file.exists()){
-            loadCSV();
-        }
+        loadCSV();
 
         System.out.println("Welcome back!");
         System.out.println("What would you like to do?");
@@ -59,7 +54,7 @@ public class UserFunctions{
             // Save state to CSV, then break loop
             else {
                 System.out.println("Saving data...");
-//                saveCSV();
+                saveCSV();
                 System.out.println("Exiting program.");
                 break;
             }
@@ -67,11 +62,11 @@ public class UserFunctions{
     }
 
     public void loadCSV() {
-        CSVManager.load(controller.getTaskTracker().getTaskList());
+        CsvManager.read(controller.getTaskTracker().getTaskList());
     }
 
     public void saveCSV() {
-        CSVManager.save(controller.getTaskTracker().getTaskList());
+        CsvManager.write(controller.getTaskTracker().getTaskList());
     }
 
     // Ask user what to do, and access the corresponding method in the TaskTracker
@@ -117,7 +112,7 @@ public class UserFunctions{
             TaskListPrinter.print(controller.getTaskTracker().getTaskList());
         }
         else if (key.equalsIgnoreCase("3")) {
-            SuggestionPrinter.print(controller.getSuggestionByDueDate());
+            SuggestionPrinter.print(controller.getTaskTracker());
         }
     }
 

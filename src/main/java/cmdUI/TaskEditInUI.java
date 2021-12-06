@@ -1,12 +1,12 @@
 package cmdUI;
 
-import controllers.Controller;
+import controllers.TaskAndTimeController;
 import printers.TaskListPrinter;
 
 import java.util.Scanner;
 
 public class TaskEditInUI {
-    public static void editTask(Controller controller) {
+    public static void editTask(TaskAndTimeController controller) {
         TaskListPrinter.print(controller.getTaskTracker().getTaskList());
         System.out.println("Type the index of the task to edit: ");
         Scanner reader = new Scanner(System.in);
