@@ -3,10 +3,7 @@ package cmdUI;
 import alarm.alarmUseCase.Pomodoro;
 import controllers.Controller;
 import gateways.CSVManager;
-<<<<<<< extend_UserFunctions
 import printers.SuggestionPrinter;
-=======
->>>>>>> main
 import printers.TaskListPrinter;
 import printers.TimelinePrinter;
 
@@ -20,15 +17,9 @@ public class UserFunctions{
     public UserFunctions() {
         controller = new Controller();
     }
-
-<<<<<<< extend_UserFunctions
+    
     // Load CSV and print opening message
     public void startUp() {
-=======
-        controller = new Controller();
-
-
->>>>>>> main
         File file = new File(System.getProperty("user.dir") +
                 "\\data\\Tasks.csv");
         // Load saved CSV file if it exists
