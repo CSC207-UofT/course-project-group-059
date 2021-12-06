@@ -1,26 +1,31 @@
 package cmdUI;
 
 import alarm.alarmUseCase.Pomodoro;
-import controllers.TaskAndTimeController;
-import gateways.CsvManager;
+import controllers.Controller;
+import gateways.CSVManager;
 import printers.SuggestionPrinter;
 import printers.TaskListPrinter;
 import printers.TimelinePrinter;
 
+import java.io.File;
 import java.time.LocalDate;
 import java.util.Scanner;
 
 public class UserFunctions{
-    private final TaskAndTimeController controller;
+    private final Controller controller;
 
     public UserFunctions() {
-        controller = new TaskAndTimeController();
+        controller = new Controller();
     }
 
     // Load CSV and print opening message
     public void startUp() {
+        File file = new File(System.getProperty("user.dir") +
+                "\\data\\Tasks.csv");
         // Load saved CSV file if it exists
-        loadCSV();
+        if(file.exists()){
+            loadCSV();
+        }
 
         System.out.println("Welcome back!");
         System.out.println("What would you like to do?");
@@ -62,11 +67,11 @@ public class UserFunctions{
     }
 
     public void loadCSV() {
-        CsvManager.read(controller.getTaskTracker().getTaskList());
+        CSVManager.load(controller.getTaskTracker().getTaskList());
     }
 
     public void saveCSV() {
-        CsvManager.write(controller.getTaskTracker().getTaskList());
+        CSVManager.save(controller.getTaskTracker().getTaskList());
     }
 
     // Ask user what to do, and access the corresponding method in the TaskTracker
@@ -112,7 +117,7 @@ public class UserFunctions{
             TaskListPrinter.print(controller.getTaskTracker().getTaskList());
         }
         else if (key.equalsIgnoreCase("3")) {
-            SuggestionPrinter.print(controller.getTaskTracker());
+            SuggestionPrinter.print(controller.getSuggestionByDueDate());
         }
     }
 
