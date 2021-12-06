@@ -1,12 +1,12 @@
 package cmdUI;
 
-import controllers.TaskAndTimeController;
+import controllers.Controller;
 
 import java.util.Scanner;
 
 public class TaskCreator {
     public static void createTask() {
-        TaskAndTimeController controller = new TaskAndTimeController();
+        Controller controller = new Controller();
         Scanner reader = new Scanner(System.in);
 
         System.out.println("Please Input the task Type (Event/Todo)");
@@ -28,7 +28,7 @@ public class TaskCreator {
             System.out.println("Please input the end time of the task (HH:mm)");
             String endTime = reader.nextLine();
 
-            controller.createTask(name,priority,description,startDate,startTime,endDate,endTime);
+            controller.createEventTask(name,priority,description,startDate,startTime,endDate,endTime);
         }
 
         else{
@@ -37,7 +37,7 @@ public class TaskCreator {
             System.out.println("Please input the start time of the task (HH:mm)");
             String time = reader.nextLine();
 
-            controller.createTask(name,priority,description,date,time,date,time);
+            controller.createEventTask(name,priority,description,date,time,date,time);
         }
     }
 }

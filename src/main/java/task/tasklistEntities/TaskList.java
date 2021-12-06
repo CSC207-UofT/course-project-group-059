@@ -2,7 +2,7 @@ package task.tasklistEntities;
 
 import dateAndTime.dateAndTimeAttributes.DateRange;
 import dateAndTime.dateAndTimeAttributes.TimeRange;
-import storer.Storable;
+import gateways.Storable;
 import task.taskEntities.EventTask;
 import task.taskEntities.Task;
 
@@ -23,44 +23,18 @@ public class TaskList implements Storable {
     public void setTaskList(List<Task> taskList) {
         this.taskList = taskList;
     }
-  
-    public ArrayList<String> save() {
-        ArrayList<String> z = new ArrayList<>();
 
-        for (Task task : this.getTaskList()) {
-            z.add(task.getName().toString() + ","
-                    + task.getPriority().toString() + ","
-                    + task.getDescription().toString() + ","
-                    + task.getAllDay().toString() + ","
-                    + task.getRecurring().toString() + ","
-                    + task.getFinished().toString() + ","
-                    + task.getDate().getStartDate().toString() + ","
-                    + task.getDate().getEndDate().toString() + ","
-                    + task.getTime().getStartTime().toString() + ","
-                    + task.getTime().getEndTime().toString() + "\n");
-        }
-
-        return z;
+    @Override
+    public List<Task> save() {
+        return taskList;
     }
 
-    public void open(ArrayList<String> csvData) {
-        List<Task> newList = new ArrayList<>();
-
-        for (String line: csvData) {
-            String[] res = line.split(",");
-
-            if (res.length > 1) {
-                DateRange dateRange = new DateRange(LocalDate.parse(res[6]), LocalDate.parse(res[7]));
-                TimeRange timeRange = new TimeRange(LocalTime.parse(res[8]), LocalTime.parse(res[9]));
-                EventTask task = new EventTask(res[0], res[1], res[2], dateRange, timeRange);
-
-                newList.add(task);
-            }
-        }
-
-        this.setTaskList(newList);
+    @Override
+    public void load(List<Task> load) {
+        setTaskList(load);
     }
-  
+
+
     @Override
     public String toString() {
         StringBuilder output = new StringBuilder("Your to-do list:");

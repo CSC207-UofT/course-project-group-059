@@ -5,6 +5,8 @@ import dateAndTime.dateAndTimeAttributes.DateRange;
 import dateAndTime.dateAndTimeAttributes.OneDay;
 import dateAndTime.dateAndTimeAttributes.TimeRange;
 import editStrategies.*;
+import suggestion.Suggester;
+import suggestion.SuggesterList;
 import task.taskAttributes.*;
 import task.taskEntities.Task;
 import task.taskUseCases.*;
@@ -13,14 +15,17 @@ import timeline.TimelineManager;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
-public class TaskAndTimeController {
+public class Controller {
 
     private final TimelineManager timelineManager;
     private final TaskTracker taskTracker;
+    private final Suggester suggester;
 
-    public TaskAndTimeController(){
+    public Controller(){
         timelineManager = new TimelineManager();
-        taskTracker = new TaskTracker(timelineManager);
+        suggester = new Suggester();
+        taskTracker = new TaskTracker(timelineManager, suggester);
+
     }
 
     public TimelineManager getTimelineManager() {
@@ -29,6 +34,10 @@ public class TaskAndTimeController {
 
     public TaskTracker getTaskTracker() {
         return taskTracker;
+    }
+
+    public Suggester getSuggester() {
+        return suggester;
     }
 
     // select task form taskList
@@ -42,13 +51,14 @@ public class TaskAndTimeController {
     }
 
     // create and add task
-    public void createTask(String name,String priority,String description,
-                                String startDate,String startTime, String endDate, String endTime){
+    public void createEventTask(String name, String priority, String description,
+                                String startDate, String startTime, String endDate, String endTime){
+        taskTracker.creatEventTask(name,priority,description,startDate,startTime,endDate,endTime);
+    }
 
-        if(startDate.equals(endDate) && startTime.equals(endTime)){
-            taskTracker.creatToDoTask(name,priority,description,endDate,startTime);
-        }
-        else taskTracker.creatEventTask(name,priority,description,startDate,startTime,endDate,endTime);
+    public void createTodoTask(String name, String priority, String description,
+                                String date, String time){
+        taskTracker.creatToDoTask(name,priority,description,date,time);
     }
 
     //add task to from taskList to Timeline manually by index
@@ -128,5 +138,9 @@ public class TaskAndTimeController {
             addToTimeline(task);
     }
 
+
+    public SuggesterList getSuggestionByDueDate(){
+        return suggester.sortByDueDate();
+    }
 
 }

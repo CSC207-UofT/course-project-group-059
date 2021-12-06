@@ -1,6 +1,6 @@
 package printers;
 
-import storer.Storable;
+import gateways.Storable;
 
 public abstract class Printer {
     public static void print(Storable storable) {
