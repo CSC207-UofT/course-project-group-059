@@ -24,7 +24,6 @@ public class TimelineTracker {
         return calender.get(date);
     }
 
-    //TODO a controller for timeline
     public Timeline getTodayTimeline(){
         return calender.get(LocalDate.now());
     }

@@ -11,7 +11,7 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TaskList implements Storable {
+public class TaskList{
     private List<Task> taskList = new ArrayList<>();
 
     public TaskList(){}
@@ -22,16 +22,6 @@ public class TaskList implements Storable {
 
     public void setTaskList(List<Task> taskList) {
         this.taskList = taskList;
-    }
-
-    @Override
-    public List<Task> save() {
-        return taskList;
-    }
-
-    @Override
-    public void load(List<Task> load) {
-        setTaskList(load);
     }
 
 
