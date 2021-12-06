@@ -29,6 +29,9 @@ public class Calender {
         return this.calender;
     }
 
+    public boolean isempty(){
+        return getCalender().values().size()==1 && getCalender().get(LocalDate.now()).isEmpty();
+    }
 
     @Override
     public String toString() {

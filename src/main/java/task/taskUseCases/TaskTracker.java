@@ -4,6 +4,7 @@ import dateAndTime.dateAndTimeAttributes.DateRange;
 import dateAndTime.dateAndTimeAttributes.OneDay;
 import dateAndTime.dateAndTimeAttributes.OneTime;
 import dateAndTime.dateAndTimeAttributes.TimeRange;
+import gateways.Storable;
 import task.taskEntities.EventTask;
 import task.taskEntities.Task;
 import task.taskEntities.TodoTask;
@@ -13,7 +14,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.*;
 
-public class TaskTracker {
+public class TaskTracker implements Storable {
 //Task Tracker implements Observer design pattern
     private final static List<TaskObserver> observerList = new ArrayList<>();
 
@@ -55,6 +56,13 @@ public class TaskTracker {
     public void creatEventTask(String name,String priority,String description,
                                String startDate,String startTime, String endDate, String endTime){
 
+        if(startDate.toLowerCase().equals("today")){
+            startDate = LocalDate.now().toString();
+        }
+        if(endDate.toLowerCase().equals("today")){
+            endDate = LocalDate.now().toString();
+        }
+
         DateRange dateRange = new DateRange(LocalDate.parse(startDate), LocalDate.parse(endDate));
         TimeRange timeRange = new TimeRange(LocalTime.parse(startTime), LocalTime.parse(endTime));
 
@@ -81,4 +89,15 @@ public class TaskTracker {
         refreshObserver(task);
     }
 
+    @Override
+    public List<Task> save() {
+        return taskList.getTaskList();
+    }
+
+    @Override
+    public void load(List<Task> load) {
+        for (Task task: load){
+            addTask(task);
+        }
+    }
 }

@@ -1,26 +1,31 @@
 package cmdUI;
 
 import alarm.alarmUseCase.Pomodoro;
-import controllers.TaskAndTimeController;
-import gateways.CsvManager;
+import controllers.Controller;
+import gateways.CSVManager;
 import printers.SuggestionPrinter;
 import printers.TaskListPrinter;
 import printers.TimelinePrinter;
 
+import java.io.File;
 import java.time.LocalDate;
 import java.util.Scanner;
 
 public class UserFunctions{
-    private final TaskAndTimeController controller;
+    private final Controller controller;
 
     public UserFunctions() {
-        controller = new TaskAndTimeController();
+        controller = new Controller();
     }
 
     // Load CSV and print opening message
     public void startUp() {
+        File file = new File(System.getProperty("user.dir") +
+                "\\data\\Tasks.csv");
         // Load saved CSV file if it exists
-        loadCSV();
+        if(file.exists()){
+            loadCSV();
+        }
 
         System.out.println("Welcome back!");
         System.out.println("What would you like to do?");
@@ -62,11 +67,11 @@ public class UserFunctions{
     }
 
     public void loadCSV() {
-        CsvManager.read(controller.getTaskTracker().getTaskList());
+        CSVManager.load(controller.getTaskTracker());
     }
 
     public void saveCSV() {
-        CsvManager.write(controller.getTaskTracker().getTaskList());
+        CSVManager.save(controller.getTaskTracker());
     }
 
     // Ask user what to do, and access the corresponding method in the TaskTracker
@@ -83,11 +88,14 @@ public class UserFunctions{
 
         // Call createTask
         if (key.equalsIgnoreCase("1")) {
-            TaskCreator.createTask();
+            TaskCreator.createTask(controller);
         }
         // Use editing methods in TaskAndTimeController
         else if (key.equalsIgnoreCase("2")) {
             TaskEditInUI.editTask(controller);
+        }
+        else if(key.equalsIgnoreCase("3")){
+            createTaskDemo.createDemo(controller);
         }
     }
 
@@ -109,10 +117,10 @@ public class UserFunctions{
             TimelinePrinter.print(controller.getTimelineManager().getTimeLine(LocalDate.now()));
         }
         else if (key.equalsIgnoreCase("2")) {
-            TaskListPrinter.print(controller.getTaskTracker().getTaskList());
+            TaskListPrinter.print(controller.getTaskTracker());
         }
         else if (key.equalsIgnoreCase("3")) {
-            SuggestionPrinter.print(controller.getTaskTracker());
+            SuggestionPrinter.print(controller.getSuggestionByDueDate());
         }
     }
 

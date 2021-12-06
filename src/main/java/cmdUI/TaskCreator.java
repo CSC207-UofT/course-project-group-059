@@ -5,8 +5,7 @@ import controllers.Controller;
 import java.util.Scanner;
 
 public class TaskCreator {
-    public static void createTask() {
-        Controller controller = new Controller();
+    public static void createTask(Controller controller) {
         Scanner reader = new Scanner(System.in);
 
         System.out.println("Please Input the task Type (Event/Todo)");

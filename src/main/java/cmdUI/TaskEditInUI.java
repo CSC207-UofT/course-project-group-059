@@ -1,13 +1,13 @@
 package cmdUI;
 
-import controllers.TaskAndTimeController;
+import controllers.Controller;
 import printers.TaskListPrinter;
 
 import java.util.Scanner;
 
 public class TaskEditInUI {
-    public static void editTask(TaskAndTimeController controller) {
-        TaskListPrinter.print(controller.getTaskTracker().getTaskList());
+    public static void editTask(Controller controller) {
+        TaskListPrinter.print(controller.getTaskTracker());
         System.out.println("Type the index of the task to edit: ");
         Scanner reader = new Scanner(System.in);
         String indexStr = reader.nextLine();
@@ -93,6 +93,7 @@ public class TaskEditInUI {
             }
             else if (attribute.equalsIgnoreCase("9")) {
                 controller.deleteTaskFromTaskList(index);
+                break;
             }
             else {
                 break;

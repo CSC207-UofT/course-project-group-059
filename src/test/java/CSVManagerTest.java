@@ -36,7 +36,7 @@ public class CSVManagerTest {
         controller.createTodoTask(name,priority,description,endDate,startTime);
 
         //save to CsV
-        CSVManager.save(controller.getTaskTracker().getTaskList());
+        CSVManager.save(controller.getTaskTracker());
 
         System.out.println("Before Delete:");
         System.out.println(controller.getTaskTracker().getTaskList());
@@ -49,7 +49,7 @@ public class CSVManagerTest {
         System.out.println("\nAfter Delete:");
         System.out.println(controller.getTaskTracker().getTaskList());
 
-        CSVManager.load(controller.getTaskTracker().getTaskList());
+        CSVManager.load(controller.getTaskTracker());
 
         System.out.println("\nAfter Load");
         System.out.println(controller.getTaskTracker().getTaskList());

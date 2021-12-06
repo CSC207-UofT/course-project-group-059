@@ -45,7 +45,7 @@ public class Timeline {
 
     public void removeFromTime(LocalTime time, Task task){
         ArrayList<Task> inBlocks = timeBlocks.get(time);
-        inBlocks.add(task);
+        inBlocks.remove(task);
         numOfTaskInBlocks--;
     }
     public void addToAllDayList(Task task){

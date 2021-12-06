@@ -26,6 +26,7 @@ public class Controller {
         suggester = new Suggester();
         taskTracker = new TaskTracker(timelineManager, suggester);
 
+
     }
 
     public TimelineManager getTimelineManager() {
@@ -67,7 +68,7 @@ public class Controller {
     }
 
     public void addToTimeline(Task task){
-        taskTracker.addTask(task);
+        timelineManager.addToTimeLine(task);
     }
 
     // delete task from this system
@@ -103,9 +104,6 @@ public class Controller {
         TaskEditor.editTask(task, new EditTaskText(new TaskDescription(newDescription)));
     }
 
-    public void editAllDay(Task task, boolean newBool){
-        TaskEditor.editTask(task, new EditTaskStatus(new AllDay(newBool)));
-    }
 
     public void editFinished(Task task, boolean newBool){
         TaskEditor.editTask(task, new EditTaskStatus(new Finished(newBool)));
@@ -116,6 +114,13 @@ public class Controller {
     }
 
     // The time editing will remove the task form timeline first then put it back
+
+    public void editAllDay(Task task, boolean newBool){
+        removeTaskFromTimeline(task);
+        TaskEditor.editTask(task, new EditTaskStatus(new AllDay(newBool)));
+        addToTimeline(task);
+    }
+
     public void editDate(Task task, String newStartDate, String newEndDate){
             removeTaskFromTimeline(task);
             DateRange newDateRange = new DateRange(LocalDate.parse(newStartDate), LocalDate.parse(newEndDate));

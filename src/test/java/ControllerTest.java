@@ -45,14 +45,47 @@ public class ControllerTest {
         Assertions.assertEquals(expected.toString(),output.toString());
     }
 
-    //TODO:
     @Test
-    public void removeTaskFromTimeLineTest(){
+    public void deleteTaskFromTaskListTest(){
+        Controller controller = new Controller();
+
+        controller.createEventTask(name,priority,description,"Today",startTime,"Today",endTime);
+
+
+        System.out.println(controller.getTimelineManager().getTimeLine(LocalDate.now()));
+
+        controller.deleteTaskFromTaskList(0);
+
+
+        System.out.println("\n"+controller.getTimelineManager().getTimeLine(LocalDate.now()));
+
+    }
+    @Test
+    public void editTaskAllDayTest(){
+        Controller controller = new Controller();
+
+        controller.createEventTask(name,priority,description,"Today",startTime,"Today",endTime);
+
+
+        System.out.println(controller.getTaskTracker().getTaskList());
+        System.out.println("\n");
+        System.out.println(controller.getTimelineManager().getTimeLine(LocalDate.now()));
+
+        controller.editAllDay(controller.selectFromTaskList(0),true);
+
+        System.out.println("\n");
+        System.out.println(controller.getTaskTracker().getTaskList());
+
+        System.out.println("\n");
+
+        System.out.println("\n"+controller.getTimelineManager().getTimeLine(LocalDate.now()));
+
 
     }
 
+
     @Test
-    public void editTaskTest(){
+    public void editTaskNameTest(){
         Controller controller = new Controller();
 
         controller.createEventTask(name,priority,description,startDate,startTime,endDate,endTime);
