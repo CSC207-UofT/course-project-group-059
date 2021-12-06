@@ -1,9 +1,9 @@
 package printers;
 
-//import printers.Printer;
-//
-//public class SuggestionPrinter extends Printer {
-//    public static void print() {
-//        // TODO: Implement once SuggestionList is implemented
-//    }
-//}
+import suggestion.SuggesterList;
+
+public class SuggestionPrinter extends Printer {
+    public static void print(SuggesterList suggesterList) {
+        System.out.println(suggesterList);
+    }
+}

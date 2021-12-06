@@ -1,22 +1,29 @@
 package cmdUI;
 
 import alarm.alarmUseCase.Pomodoro;
-import controllers.TaskAndTimeController;
+import controllers.Controller;
+import gateways.CSVManager;
 import printers.TaskListPrinter;
 import printers.TimelinePrinter;
 
+import java.io.File;
 import java.time.LocalDate;
 import java.util.Scanner;
 
 public class UserFunctions{
-    private final TaskAndTimeController controller;
+    private final Controller controller;
 
     public UserFunctions() {
 
-        controller = new TaskAndTimeController();
+        controller = new Controller();
 
+
+        File file = new File(System.getProperty("user.dir") +
+                "\\data\\Tasks.csv");
         // Load saved CSV file if it exists
-        loadCSV();
+        if(file.exists()){
+            loadCSV();
+        }
 
         System.out.println("Welcome back!");
         System.out.println("What would you like to do?");
@@ -49,7 +56,7 @@ public class UserFunctions{
             // Save state to CSV, then break loop
             else {
                 System.out.println("Saving data...");
-                saveCSV();
+//                saveCSV();
                 System.out.println("Exiting program.");
                 break;
             }
@@ -57,11 +64,11 @@ public class UserFunctions{
     }
 
     public void loadCSV() {
-        CSVManager.read(this.tasklist);
+        CSVManager.load(controller.getTaskTracker().getTaskList());
     }
 
     public void saveCSV() {
-        CSVManager.write(this.tasklist);
+        CSVManager.save(controller.getTaskTracker().getTaskList());
     }
 
     // Ask user what to do, and access the corresponding method in the TaskTracker

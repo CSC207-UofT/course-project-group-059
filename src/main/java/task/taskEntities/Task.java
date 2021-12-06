@@ -49,6 +49,19 @@ public abstract class Task{
 
     }
 
+    public Task(String name, String priority, String description, Date date, Time time, Boolean allDay, Boolean recurring, Boolean finished) {
+
+        this.name = new TaskName(name);
+        this.priority = new TaskPriority(priority);
+        this.description = new TaskDescription(description);
+        this.date = date;
+        this.time = time;
+        this.allDay.update(allDay);
+        this.recurring.update(recurring);
+        this.finished.update(finished);
+
+    }
+
     public TaskName getName() {
         return name;
     }

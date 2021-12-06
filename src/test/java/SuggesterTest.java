@@ -3,17 +3,15 @@ import dateAndTime.dateAndTimeAttributes.OneDay;
 import dateAndTime.dateAndTimeAttributes.OneTime;
 import dateAndTime.dateAndTimeAttributes.TimeRange;
 import org.junit.jupiter.api.Test;
-import suggestion.Suggestor;
+import suggestion.Suggester;
 import task.taskEntities.EventTask;
-import task.taskEntities.SubTask;
 import task.taskEntities.Task;
 import task.taskUseCases.TaskTracker;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.ArrayList;
 
-public class SuggestorTest {
+public class SuggesterTest {
 
     String name = "Math Work";
     String priority = "";
@@ -37,7 +35,7 @@ public class SuggestorTest {
 
 
     @Test
-    public void TestSuggestor(){
+    public void TestSuggester(){
         TaskTracker tracker = new TaskTracker();
         Task newTask = new EventTask(name,priority,description,dateRange,timeRange);
         Task newTask2 = new EventTask(name,priority,description,dateRange2,timeRange);
@@ -50,7 +48,7 @@ public class SuggestorTest {
         tracker.addTask(newTask3);
         tracker.addTask(newTask4);
 
-        Suggestor suggest = new Suggestor(tracker);
+        Suggester suggest = new Suggester();
 
         System.out.println(suggest.sortByDueDate());
 

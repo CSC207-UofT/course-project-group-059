@@ -5,20 +5,17 @@ import task.taskEntities.Task;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SuggestorList {
+public class SuggesterList {
 
-    private List<Task> suggestions = new ArrayList<>();
+    private final List<Task> suggestions = new ArrayList<>();
 
     public List<Task> getSuggestions() {
         return suggestions;
     }
-    public void setSuggestions(List<Task> suggestions) {
-        this.suggestions = suggestions;
-    }
 
 @Override
     public String toString() {
-        StringBuilder output = new StringBuilder("Your to-do list:");
+        StringBuilder output = new StringBuilder("Your to-do list by suggestion:");
 
         output.append("\n");
         if (suggestions.isEmpty()) {
