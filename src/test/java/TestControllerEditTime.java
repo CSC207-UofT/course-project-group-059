@@ -1,4 +1,4 @@
-import controllers.TaskAndTimeController;
+import controllers.Controller;
 import dateAndTime.dateAndTimeAttributes.DateRange;
 import dateAndTime.dateAndTimeAttributes.OneDay;
 import dateAndTime.dateAndTimeAttributes.OneTime;
@@ -29,7 +29,7 @@ public class TestControllerEditTime {
 
     @Test
     public void editTaskDateAndTime(){
-        TaskAndTimeController controller = new TaskAndTimeController();
+        Controller controller = new Controller();
 
         String newStartDate = "2021-12-20";
         String newStartTime = "11:00";
@@ -40,7 +40,7 @@ public class TestControllerEditTime {
         TimeRange newTimeRange = new TimeRange(LocalTime.parse(newStartTime), LocalTime.parse(newEndTime));
 
 
-        controller.createTask(name,priority,description,startDate,startTime,endDate,endTime);
+        controller.createEventTask(name,priority,description,startDate,startTime,endDate,endTime);
 
         Task expected = new EventTask(name,priority,description,newDateRange,newTimeRange);
 

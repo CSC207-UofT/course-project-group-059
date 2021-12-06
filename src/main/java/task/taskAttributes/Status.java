@@ -14,6 +14,8 @@ public abstract class Status {
         this.value = value;
     }
 
+    public void update(String bool){ this.value = bool.equals("true");}
+
     public void update(boolean newValue){
         this.value = newValue;
     }
@@ -25,5 +27,15 @@ public abstract class Status {
 
     public boolean getBool() {
         return value;
+    }
+
+    @Override
+    public String toString() {
+        if(value){
+            return "true";
+        }
+        else{
+            return "false";
+        }
     }
 }

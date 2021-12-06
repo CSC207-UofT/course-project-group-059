@@ -1,15 +1,14 @@
-import controllers.TaskAndTimeController;
+import controllers.Controller;
 import dateAndTime.dateAndTimeAttributes.*;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import task.taskEntities.EventTask;
 import task.taskEntities.*;
-import timeline.Timeline;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
 
-public class TaskAndTimeControllerTest {
+public class ControllerTest {
     String name = "Math Work";
     String priority = "";
     String description = "";
@@ -25,9 +24,9 @@ public class TaskAndTimeControllerTest {
 
     @Test
     public void selectFromTaskListTest(){
-        TaskAndTimeController controller = new TaskAndTimeController();
+        Controller controller = new Controller();
 
-        controller.createTask(name,priority,description,startDate,startTime,endDate,endTime);
+        controller.createEventTask(name,priority,description,startDate,startTime,endDate,endTime);
 
         Task expected = new EventTask(name,priority,description,dateRange,timeRange);
         Assertions.assertEquals(expected.toString(),controller.selectFromTaskList(0).toString());
@@ -35,9 +34,9 @@ public class TaskAndTimeControllerTest {
 
     @Test
     public void selectFromTimelineTest(){
-        TaskAndTimeController controller = new TaskAndTimeController();
+        Controller controller = new Controller();
 
-        controller.createTask(name,priority,description,startDate,startTime,endDate,endTime);
+        controller.createEventTask(name,priority,description,startDate,startTime,endDate,endTime);
 
         Task expected = new EventTask(name,priority,description,dateRange,timeRange);
 
@@ -54,9 +53,9 @@ public class TaskAndTimeControllerTest {
 
     @Test
     public void editTaskTest(){
-        TaskAndTimeController controller = new TaskAndTimeController();
+        Controller controller = new Controller();
 
-        controller.createTask(name,priority,description,startDate,startTime,endDate,endTime);
+        controller.createEventTask(name,priority,description,startDate,startTime,endDate,endTime);
 
         controller.editName(controller.selectFromTaskList(0),"newName");
 
