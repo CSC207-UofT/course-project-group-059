@@ -11,6 +11,7 @@ import java.time.*;
 
 public class TaskController {
 
+    // deal with any task editing features
     TimelineManager manager = new TimelineManager();
 
     public TaskController(TimelineManager manager) {

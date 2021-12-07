@@ -4,6 +4,7 @@ import suggestion.Suggester;
 import suggestion.SuggesterList;
 
 public class SuggestionController {
+    // deal with suggestion features
 
     private final Suggester suggester;
 

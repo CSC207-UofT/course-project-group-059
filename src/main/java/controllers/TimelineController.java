@@ -7,6 +7,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 
 public class TimelineController {
+    //deal with any Timeline modifying features.
 
     private final TimelineManager timelineManager;
 
