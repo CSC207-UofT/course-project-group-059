@@ -12,6 +12,7 @@ public class ControllerFacade {
     private final TimelineController timeline;
     private final SuggestionController suggest;
 
+    //A hub for all the sub system of controllers.
     public ControllerFacade(){
         TimelineManager timelineManager = new TimelineManager();
         Suggester suggester = new Suggester();
