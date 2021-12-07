@@ -1,6 +1,6 @@
 package cmdUI;
 
-import controllers.Controller;
+import controllers.ControllerFacade;
 import dateAndTime.dateAndTimeAttributes.DateRange;
 import dateAndTime.dateAndTimeAttributes.OneDay;
 import dateAndTime.dateAndTimeAttributes.OneTime;
@@ -10,15 +10,13 @@ import printers.TimelinePrinter;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.Scanner;
-
 
 
 public class createTaskDemo {
 
 
 
-    public static void createDemo(Controller controller){
+    public static void createDemo(ControllerFacade controllerFacade){
         String name = "Math Work";
         String priority = "";
         String description = "";
@@ -35,12 +33,12 @@ public class createTaskDemo {
 
         System.out.println("Creating demo task....\n");
 
-        controller.createEventTask(name,priority,description,"Today",startTime,"Today",endTime);
+        controllerFacade.getTaskListController().createEventTask(name,priority,description,"Today",startTime,"Today",endTime);
 
         System.out.println("Done!:\n");
-        TimelinePrinter.print(controller.getTimelineManager().getTimeLine(LocalDate.now()));
+        TimelinePrinter.print(controllerFacade.getTimelineController().getTimelineManager().getTimeLine(LocalDate.now()));
         System.out.println("\n");
-        TaskListPrinter.print(controller.getTaskTracker());
+        TaskListPrinter.print(controllerFacade.getTaskListController().getTaskTracker());
         System.out.println("\n");
 
     }

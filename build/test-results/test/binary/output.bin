@@ -1,6 +1,64 @@
 Your to-do list:
-ÅTask{name='Math Work', priority='N/A', description='N/A', evaluation='N/A', subTasks=null, date=DateRange{startDate=2021-10-17, endDate=2012-06-18}, time=TimeRange{startTime=14:00, endTime=15:00}, remind=null, finished=false, recurring=false, allDay=false}
-ÅTask{name='Math Work', priority='N/A', description='N/A', evaluation='N/A', subTasks=null, date=DateRange{startDate=2021-10-17, endDate=2021-10-17}, time=TimeRange{startTime=14:00, endTime=15:00}, remind=null, finished=false, recurring=false, allDay=false}
-ÅTask{name='Math Work', priority='N/A', description='N/A', evaluation='N/A', subTasks=null, date=DateRange{startDate=2021-10-17, endDate=2021-12-16}, time=TimeRange{startTime=14:00, endTime=15:00}, remind=null, finished=false, recurring=false, allDay=false}
-ÅTask{name='Math Work', priority='N/A', description='N/A', evaluation='N/A', subTasks=null, date=DateRange{startDate=2021-10-17, endDate=2025-05-23}, time=TimeRange{startTime=14:00, endTime=15:00}, remind=null, finished=false, recurring=false, allDay=false}
+ÔøΩ1. Task{name='Math Work', priority='N/A', description='N/A', evaluation='N/A', subTasks=null, date=DateRange{startDate=2021-12-06, endDate=2021-12-06}, time=TimeRange{startTime=14:00, endTime=17:00}, remind=null, finished=false, recurring=false, allDay=false}
 
+
+
+2021-12-06 timeline:
+00:00:	
+01:00:	
+02:00:	
+03:00:	
+04:00:	
+05:00:	
+06:00:	
+07:00:	
+08:00:	
+09:00:	
+10:00:	
+11:00:	
+12:00:	
+13:00:	
+14:00:	1. Math Work, 
+15:00:	1. Math Work, 
+16:00:	1. Math Work, 
+17:00:	
+18:00:	
+19:00:	
+20:00:	
+21:00:	
+22:00:	
+	23:00:	
+
+
+Your to-do list:
+ÔøΩ1. Task{name='Math Work', priority='N/A', description='N/A', evaluation='N/A', subTasks=null, date=DateRange{startDate=2021-12-06, endDate=2021-12-06}, time=TimeRange{startTime=14:00, endTime=17:00}, remind=null, finished=false, recurring=false, allDay=true}
+
+
+
+
+2021-12-06 timeline:
+All day: 	1. Math Work
+00:00:	
+01:00:	
+02:00:	
+03:00:	
+04:00:	
+05:00:	
+06:00:	
+07:00:	
+08:00:	
+09:00:	
+10:00:	
+11:00:	
+12:00:	
+13:00:	
+14:00:	
+15:00:	
+16:00:	
+17:00:	
+18:00:	
+19:00:	
+20:00:	
+21:00:	
+22:00:	
+	23:00:	

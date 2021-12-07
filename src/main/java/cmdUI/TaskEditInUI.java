@@ -1,18 +1,21 @@
 package cmdUI;
 
-import controllers.Controller;
+import controllers.ControllerFacade;
 import printers.TaskListPrinter;
+import task.taskEntities.Task;
 
 import java.util.Scanner;
 
 public class TaskEditInUI {
-    public static void editTask(Controller controller) {
-        TaskListPrinter.print(controller.getTaskTracker());
+    public static void editTask(ControllerFacade controllerFacade) {
+        TaskListPrinter.print(controllerFacade.getTaskListController().getTaskTracker());
         System.out.println("Type the index of the task to edit: ");
         Scanner reader = new Scanner(System.in);
         String indexStr = reader.nextLine();
         int index = Integer.parseInt(indexStr);
         index--;
+
+        Task target = controllerFacade.getTaskListController().selectFromTaskList(index);
 
         String attributes = "\nChoose what to edit: " +
                 "\n1: Name" +
@@ -35,46 +38,52 @@ public class TaskEditInUI {
             if (attribute.equalsIgnoreCase("1")) {
                 System.out.println("Enter new name: ");
                 String newName = reader.nextLine();
-                controller.editName(controller.selectFromTaskList(index), newName);
+                controllerFacade.getTaskController().editName(target, newName);
             }
             else if (attribute.equalsIgnoreCase("2")) {
                 System.out.println("Enter new priority: ");
                 String newPriority = reader.nextLine();
-                controller.editPriority(controller.selectFromTaskList(index), newPriority);
+
+                controllerFacade.getTaskController().editPriority(target, newPriority);
             }
             else if (attribute.equalsIgnoreCase("3")) {
                 System.out.println("Enter new description: ");
                 String newDescription = reader.nextLine();
-                controller.editDescription(controller.selectFromTaskList(index), newDescription);
+
+                controllerFacade.getTaskController().editDescription(target, newDescription);
             }
             else if (attribute.equalsIgnoreCase("4")) {
                 System.out.println("Enter new status (T/F): ");
                 String newAllDay = reader.nextLine();
+
                 if (newAllDay.equalsIgnoreCase("T")) {
-                    controller.editAllDay(controller.selectFromTaskList(index), true);
+                    controllerFacade.getTaskController().editAllDay(target, true);
                 }
                 else {
-                    controller.editAllDay(controller.selectFromTaskList(index), false);
+                    controllerFacade.getTaskController().editAllDay(target, false);
                 }
             }
             else if (attribute.equalsIgnoreCase("5")) {
                 System.out.println("Enter new status (T/F): ");
                 String newFinished = reader.nextLine();
+
                 if (newFinished.equalsIgnoreCase("T")) {
-                    controller.editFinished(controller.selectFromTaskList(index), true);
+                    controllerFacade.getTaskController().editFinished(target, true);
                 }
                 else {
-                    controller.editFinished(controller.selectFromTaskList(index), false);
+                    controllerFacade.getTaskController().editFinished(target, false);
                 }
             }
             else if (attribute.equalsIgnoreCase("6")) {
                 System.out.println("Enter new status (T/F): ");
                 String newRecurring = reader.nextLine();
+
+
                 if (newRecurring.equalsIgnoreCase("T")) {
-                    controller.editRecurring(controller.selectFromTaskList(index), true);
+                    controllerFacade.getTaskController().editRecurring(target, true);
                 }
                 else {
-                    controller.editRecurring(controller.selectFromTaskList(index), false);
+                    controllerFacade.getTaskController().editRecurring(target, false);
                 }
             }
             else if (attribute.equalsIgnoreCase("7")) {
@@ -82,17 +91,17 @@ public class TaskEditInUI {
                 String newStartDate = reader.nextLine();
                 System.out.println("Enter new end date: ");
                 String newEndDate = reader.nextLine();
-                controller.editDate(controller.selectFromTaskList(index), newStartDate, newEndDate);
+                controllerFacade.getTaskController().editDate(target, newStartDate, newEndDate);
             }
             else if (attribute.equalsIgnoreCase("8")) {
                 System.out.println("Enter new start time: ");
                 String newStartTime = reader.nextLine();
                 System.out.println("Enter new end time: ");
                 String newEndTime = reader.nextLine();
-                controller.editTime(controller.selectFromTaskList(index), newStartTime, newEndTime);
+                controllerFacade.getTaskController().editTime(target, newStartTime, newEndTime);
             }
             else if (attribute.equalsIgnoreCase("9")) {
-                controller.deleteTaskFromTaskList(index);
+                controllerFacade.getTaskListController().deleteTaskFromTaskList(index);
                 break;
             }
             else {
