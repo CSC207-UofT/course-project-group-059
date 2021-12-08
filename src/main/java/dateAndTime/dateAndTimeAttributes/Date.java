@@ -23,8 +23,17 @@ public abstract class Date {
     }
 
     public Date(LocalDate startDate, LocalDate endDate) {
-        this.startDate = startDate;
-        this.endDate = endDate;
+
+        //Reverse when the date input in a wrong order.
+        if(startDate.isAfter(endDate)){
+
+            this.startDate = endDate;
+            this.endDate = startDate;
+        }
+        else{
+            this.startDate = startDate;
+            this.endDate = endDate;
+        }
     }
 
     // getter and setter for each localDate//These methods are dealing with the case that startDate and endDate are different
