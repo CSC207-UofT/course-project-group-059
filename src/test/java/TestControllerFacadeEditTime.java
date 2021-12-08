@@ -1,4 +1,4 @@
-import controllers.Controller;
+import controllers.ControllerFacade;
 import dateAndTime.dateAndTimeAttributes.DateRange;
 import dateAndTime.dateAndTimeAttributes.OneDay;
 import dateAndTime.dateAndTimeAttributes.OneTime;
@@ -12,7 +12,7 @@ import timeline.Timeline;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
-public class TestControllerEditTime {
+public class TestControllerFacadeEditTime {
 
     String name = "Math Work";
     String priority = "";
@@ -29,7 +29,7 @@ public class TestControllerEditTime {
 
     @Test
     public void editTaskDateAndTime(){
-        Controller controller = new Controller();
+        ControllerFacade controllerFacade = new ControllerFacade();
 
         String newStartDate = "2021-12-20";
         String newStartTime = "11:00";
@@ -40,7 +40,7 @@ public class TestControllerEditTime {
         TimeRange newTimeRange = new TimeRange(LocalTime.parse(newStartTime), LocalTime.parse(newEndTime));
 
 
-        controller.createEventTask(name,priority,description,startDate,startTime,endDate,endTime);
+        controllerFacade.getTaskListController().createEventTask(name,priority,description,startDate,startTime,endDate,endTime);
 
         Task expected = new EventTask(name,priority,description,newDateRange,newTimeRange);
 
@@ -49,11 +49,11 @@ public class TestControllerEditTime {
 
 
 
-        controller.editDate(controller.selectFromTaskList(0),newStartDate,newEndDate);
-        controller.editTime(controller.selectFromTaskList(0),newStartTime,newEndTime);
+        controllerFacade.getTaskController().editDate(controllerFacade.getTaskListController().selectFromTaskList(0),newStartDate,newEndDate);
+        controllerFacade.getTaskController().editTime(controllerFacade.getTaskListController().selectFromTaskList(0),newStartTime,newEndTime);
 
-        Task output = controller.selectFromTaskList(0);
-        Timeline outputTimeline = controller.getTimelineManager().getTimeLine(output.getDate().getStartDate());
+        Task output = controllerFacade.getTaskListController().selectFromTaskList(0);
+        Timeline outputTimeline = controllerFacade.getTimelineController().getTimelineManager().getTimeLine(output.getDate().getStartDate());
 
         Assertions.assertEquals(expected.toString(),output.toString());
         Assertions.assertEquals(expectedTimeline.toString(),outputTimeline.toString());

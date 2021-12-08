@@ -1,4 +1,4 @@
-import controllers.Controller;
+import controllers.ControllerFacade;
 import dateAndTime.dateAndTimeAttributes.*;
 import gateways.CSVManager;
 import org.junit.jupiter.api.Test;
@@ -26,33 +26,33 @@ public class CSVManagerTest {
 
     @Test
     public void testReadAndWrite(){
-        Controller controller = new Controller();
+        ControllerFacade controllerFacade = new ControllerFacade();
 
         Task newEventTask = new EventTask(name,priority,description,dateRange,timeRange);
         Task newTodoTask= new TodoTask(name,priority,description,oneDay,oneTime);
 
         //create event
-        controller.createEventTask(name,priority,description,startDate,startTime,endDate,endTime);
-        controller.createTodoTask(name,priority,description,endDate,startTime);
+        controllerFacade.getTaskListController().createEventTask(name,priority,description,startDate,startTime,endDate,endTime);
+        controllerFacade.getTaskListController().createTodoTask(name,priority,description,endDate,startTime);
 
         //save to CsV
-        CSVManager.save(controller.getTaskTracker());
+        CSVManager.save(controllerFacade.getTaskListController().getTaskTracker());
 
         System.out.println("Before Delete:");
-        System.out.println(controller.getTaskTracker().getTaskList());
+        System.out.println(controllerFacade.getTaskListController().getTaskTracker().getTaskList());
 
 
         //delete tasks
-        controller.deleteTaskFromTaskList(0);
-        controller.deleteTaskFromTaskList(0);
+        controllerFacade.getTaskListController().deleteTaskFromTaskList(0);
+        controllerFacade.getTaskListController().deleteTaskFromTaskList(0);
 
         System.out.println("\nAfter Delete:");
-        System.out.println(controller.getTaskTracker().getTaskList());
+        System.out.println(controllerFacade.getTaskListController().getTaskTracker().getTaskList());
 
-        CSVManager.load(controller.getTaskTracker());
+        CSVManager.load(controllerFacade.getTaskListController().getTaskTracker());
 
         System.out.println("\nAfter Load");
-        System.out.println(controller.getTaskTracker().getTaskList());
+        System.out.println(controllerFacade.getTaskListController().getTaskTracker().getTaskList());
 
     }
 }

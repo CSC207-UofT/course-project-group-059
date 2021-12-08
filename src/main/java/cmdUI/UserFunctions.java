@@ -1,7 +1,7 @@
 package cmdUI;
 
 import alarm.alarmUseCase.Pomodoro;
-import controllers.Controller;
+import controllers.ControllerFacade;
 import gateways.CSVManager;
 import printers.SuggestionPrinter;
 import printers.TaskListPrinter;
@@ -12,10 +12,10 @@ import java.time.LocalDate;
 import java.util.Scanner;
 
 public class UserFunctions{
-    private final Controller controller;
+    private final ControllerFacade controllerFacade;
 
     public UserFunctions() {
-        controller = new Controller();
+        controllerFacade = new ControllerFacade();
     }
 
     // Load CSV and print opening message
@@ -67,11 +67,11 @@ public class UserFunctions{
     }
 
     public void loadCSV() {
-        CSVManager.load(controller.getTaskTracker());
+        CSVManager.load(controllerFacade.getTaskListController().getTaskTracker());
     }
 
     public void saveCSV() {
-        CSVManager.save(controller.getTaskTracker());
+        CSVManager.save(controllerFacade.getTaskListController().getTaskTracker());
     }
 
     // Ask user what to do, and access the corresponding method in the TaskTracker
@@ -88,14 +88,14 @@ public class UserFunctions{
 
         // Call createTask
         if (key.equalsIgnoreCase("1")) {
-            TaskCreator.createTask(controller);
+            TaskCreator.createTask(controllerFacade);
         }
         // Use editing methods in TaskAndTimeController
         else if (key.equalsIgnoreCase("2")) {
-            TaskEditInUI.editTask(controller);
+            TaskEditInUI.editTask(controllerFacade);
         }
         else if(key.equalsIgnoreCase("3")){
-            createTaskDemo.createDemo(controller);
+            createTaskDemo.createDemo(controllerFacade);
         }
     }
 
@@ -114,13 +114,13 @@ public class UserFunctions{
 
         // Call print method in respective printer classes
         if (key.equalsIgnoreCase("1")) {
-            TimelinePrinter.print(controller.getTimelineManager().getTimeLine(LocalDate.now()));
+            TimelinePrinter.print(controllerFacade.getTimelineController().getTimelineManager().getTimeLine(LocalDate.now()));
         }
         else if (key.equalsIgnoreCase("2")) {
-            TaskListPrinter.print(controller.getTaskTracker());
+            TaskListPrinter.print(controllerFacade.getTaskListController().getTaskTracker());
         }
         else if (key.equalsIgnoreCase("3")) {
-            SuggestionPrinter.print(controller.getSuggestionByDueDate());
+            SuggestionPrinter.print(controllerFacade.getSuggestionController().getSuggestionByDueDate());
         }
     }
 

@@ -3,7 +3,6 @@ package task.taskEntities;
 import task.taskAttributes.*;
 import dateAndTime.dateAndTimeAttributes.Date;
 import dateAndTime.dateAndTimeAttributes.Time;
-import dateAndTime.dateAndTimeAttributes.TimeToRemind;
 
 import java.util.ArrayList;
 public abstract class Task{
@@ -20,8 +19,6 @@ public abstract class Task{
 
     protected Date date;
     protected Time time;
-
-    protected TimeToRemind remind;
 
     // The status are all false at default
     protected Finished finished = new Finished();
@@ -96,9 +93,6 @@ public abstract class Task{
         this.time = time;
     }
 
-    public TimeToRemind getRemind() {
-        return remind;
-    }
 
     public Finished getFinished() {
         return finished;
@@ -122,7 +116,6 @@ public abstract class Task{
                 ", subTasks=" + subTasks +
                 ", date=" + date +
                 ", time=" + time +
-                ", remind=" + remind +
                 ", finished=" + finished.getBool() +
                 ", recurring=" + recurring.getBool() +
                 ", allDay=" + allDay.getBool() +
