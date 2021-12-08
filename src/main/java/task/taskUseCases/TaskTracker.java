@@ -52,14 +52,13 @@ public class TaskTracker implements Storable {
 
 
 // deal with taskList and task creation
-
     public void creatEventTask(String name,String priority,String description,
                                String startDate,String startTime, String endDate, String endTime){
 
-        if(startDate.toLowerCase().equals("today")){
+        if(startDate.equalsIgnoreCase("today")){
             startDate = LocalDate.now().toString();
         }
-        if(endDate.toLowerCase().equals("today")){
+        if(endDate.equalsIgnoreCase("today")){
             endDate = LocalDate.now().toString();
         }
 

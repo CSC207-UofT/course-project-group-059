@@ -21,7 +21,6 @@ public class TimelineManager  implements TaskObserver {
     //NOTE: how to deal with repeating task is not decided yet.
     //Maybe the observer will update the repeating task to timeline every day
 
-    //TODO: Make it able to accept like 12:00 - 12:30 and store in to time block 12:00
     public void addToTimeLine(Task task){
         // deal with all day task
         // Case1: eventTask start and end today, all days.
