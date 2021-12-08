@@ -74,10 +74,11 @@ public class Pomodoro {
     public void repeatUpdate() {
         while (true) {
             try {
-//                TimeUnit.MINUTES.sleep(1);
+                // Repeat every minute
+                TimeUnit.MINUTES.sleep(1);
 
                 // Repeating every second, use for testing or demo
-                TimeUnit.SECONDS.sleep(1);
+//                TimeUnit.SECONDS.sleep(1);
 
                 String message = update();
                 System.out.println(message);

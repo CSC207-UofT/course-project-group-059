@@ -2,6 +2,8 @@ package controllers;
 
 import alarm.alarmUseCase.Pomodoro;
 
+import java.util.Scanner;
+
 public class PomodoroController {
 
     // default Setting
@@ -21,6 +23,12 @@ public class PomodoroController {
     }
 
     public void startPomodoro(){
+        System.out.println("Type the number of Pomodoros to complete: ");
+
+        Scanner reader = new Scanner(System.in);
+        String key = reader.nextLine();
+
+        int workIntervals = Integer.parseInt(key);
         System.out.println("Pomodoro started.");
         Pomodoro pomodoro = new Pomodoro(workIntervals, shortDur, longDur, workDur);
     }
