@@ -126,11 +126,6 @@ public class UserFunctions{
 
     // Creates and starts an instance of Pomodoro
     public void startPomodoro(){
-        int workIntervals = 2;
-        int shortDur = 5;
-        int longDur = 20;
-        int workDur = 25;
-        System.out.println("Pomodoro started.");
-        Pomodoro pomodoro = new Pomodoro(workIntervals, shortDur, longDur, workDur);
+        controllerFacade.getPomodoro().startPomodoro();
     }
 }

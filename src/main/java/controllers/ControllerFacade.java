@@ -11,6 +11,7 @@ public class ControllerFacade {
     private final TaskListController taskList;
     private final TimelineController timeline;
     private final SuggestionController suggest;
+    private final PomodoroController pomodoro;
 
     //A hub for all the sub system of controllers.
     public ControllerFacade(){
@@ -22,6 +23,7 @@ public class ControllerFacade {
         this.timeline = new TimelineController(timelineManager);
         this.taskList = new TaskListController(tracker);
         this.task = new TaskController(timelineManager);
+        this.pomodoro = new PomodoroController();
 
     }
 
@@ -39,5 +41,9 @@ public class ControllerFacade {
 
     public SuggestionController getSuggestionController() {
         return suggest;
+    }
+
+    public PomodoroController getPomodoro() {
+        return pomodoro;
     }
 }
