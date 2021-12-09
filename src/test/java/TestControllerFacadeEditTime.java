@@ -1,7 +1,5 @@
 import controllers.ControllerFacade;
 import dateAndTime.dateAndTimeAttributes.DateRange;
-import dateAndTime.dateAndTimeAttributes.OneDay;
-import dateAndTime.dateAndTimeAttributes.OneTime;
 import dateAndTime.dateAndTimeAttributes.TimeRange;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -21,11 +19,6 @@ public class TestControllerFacadeEditTime {
     String startTime = "14:00";
     String endDate = "2021-12-16";
     String endTime = "17:00";
-
-    DateRange dateRange = new DateRange(LocalDate.parse(startDate), LocalDate.parse(endDate));
-    OneDay oneDay = new OneDay(LocalDate.parse(endDate));
-    TimeRange timeRange = new TimeRange(LocalTime.parse(startTime), LocalTime.parse(endTime));
-    OneTime oneTime = new OneTime(LocalTime.parse(endTime));
 
     @Test
     public void editTaskDateAndTime(){

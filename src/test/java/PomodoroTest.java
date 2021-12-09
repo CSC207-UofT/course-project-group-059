@@ -3,12 +3,11 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class PomodoroTest {
-    int workInt = 4;
-    int shortDur = 5;
-    int longDur = 15;
-    int workDur = 25;
+    int workInt = 1;
+    int shortDur = 1;
+    int workDur = 1;
 
-    Pomodoro p = new Pomodoro(workInt, shortDur, longDur, workDur);
+    Pomodoro p = new Pomodoro(workInt, shortDur, workDur);
 
     @Test
     public void updateTest() {
@@ -29,11 +28,6 @@ public class PomodoroTest {
                 Assertions.assertEquals("", p.update());
             }
             Assertions.assertEquals(Pomodoro.getBreakMsg(), p.update());
-
-            for (int i = 0; i < longDur-1; i++) {
-                Assertions.assertEquals("", p.update());
-            }
-            Assertions.assertEquals(Pomodoro.getWorkMsg(), p.update());
         }
     }
 }

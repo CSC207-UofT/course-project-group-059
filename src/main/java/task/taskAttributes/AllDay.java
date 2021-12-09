@@ -1,6 +1,5 @@
 package task.taskAttributes;
 
-import editStrategies.EditTaskStatus;
 import task.taskEntities.Task;
 
 public class AllDay extends Status {

@@ -13,16 +13,18 @@ public class Pomodoro {
     private AlarmClock alarm;
 
     private final int finalIndex; //index of last interval in cycle (long break)
-    private final int shortBreakDuration, longBreakDuration, workDuration;
+    private final int shortBreakDuration;
+    private final int workDuration;
+
+
 
     //constructor
-    public Pomodoro(int workIntervals, int shortDur, int longDur, int workDur) {
+    public Pomodoro(int workIntervals, int shortDur, int workDur) {
         this.pomodoroCount = 0;
 
         this.finalIndex = workIntervals *2 - 1;
 
         this.shortBreakDuration = shortDur;
-        this.longBreakDuration = longDur;
         this.workDuration = workDur;
         startWorkAlarm();
         repeatUpdate();
@@ -43,7 +45,7 @@ public class Pomodoro {
         return workMsg;
     }
 
-    //starts alarm for relaxing and returns a message
+    //starts alarm for relaxing and returns a massage
     private String startRelaxAlarm(int dur) {
         this.alarm = new AlarmClock(dur);
         return breakMsg;

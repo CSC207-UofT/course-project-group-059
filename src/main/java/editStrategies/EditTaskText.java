@@ -1,8 +1,7 @@
 package editStrategies;
 
-import task.taskEntities.Task;
 import task.taskAttributes.Text;
-import task.taskAttributes.*;
+import task.taskEntities.Task;
 
 public class EditTaskText implements EditStrategy {
 

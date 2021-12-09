@@ -1,5 +1,6 @@
 package suggestion;
 
+import printers.Printable;
 import task.taskEntities.Task;
 import task.taskUseCases.TaskObserver;
 import task.taskUseCases.TaskTracker;
@@ -8,7 +9,7 @@ import task.tasklistEntities.TaskList;
 import java.util.Comparator;
 
 
-public class Suggester implements TaskObserver {
+public class Suggester implements TaskObserver, Printable {
     private final SuggesterList suggestions;
 
     public Suggester() {
@@ -19,6 +20,11 @@ public class Suggester implements TaskObserver {
             suggestions.getSuggestions().add(t);
         }
 
+    }
+
+    @Override
+    public String getPrint() {
+        return suggestions.toString();
     }
 
     // Sorting functionality

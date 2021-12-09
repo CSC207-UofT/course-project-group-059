@@ -2,9 +2,10 @@ package timeline;
 
 import task.taskEntities.Task;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
-import java.time.*;
 
 public class Timeline {
 

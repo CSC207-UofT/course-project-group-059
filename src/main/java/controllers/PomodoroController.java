@@ -17,20 +17,19 @@ public class PomodoroController {
 
     public PomodoroController(int workIntervals, int shortDur, int longDur, int workDur) {
         this.workIntervals = workIntervals;
-        this.shortDur = shortDur;
         this.longDur = longDur;
         this.workDur = workDur;
     }
 
     public void startPomodoro(){
-        System.out.println("Type the number of Pomodoros to complete: ");
+        System.out.println("Type the number of Pomodoro to complete: ");
 
         Scanner reader = new Scanner(System.in);
         String key = reader.nextLine();
 
         int workIntervals = Integer.parseInt(key);
         System.out.println("Pomodoro started.");
-        Pomodoro pomodoro = new Pomodoro(workIntervals, shortDur, longDur, workDur);
+        new Pomodoro(workIntervals, shortDur, workDur);
     }
 
 

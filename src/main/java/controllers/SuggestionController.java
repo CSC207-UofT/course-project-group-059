@@ -1,7 +1,6 @@
 package controllers;
 
 import suggestion.Suggester;
-import suggestion.SuggesterList;
 
 public class SuggestionController {
     // deal with suggestion features
@@ -16,7 +15,8 @@ public class SuggestionController {
         return suggester;
     }
 
-    public SuggesterList getSuggestionByDueDate(){
-        return suggester.sortByDueDate();
+    public Suggester getSuggestionByDueDate(){
+        suggester.sortByDueDate();
+        return getSuggester();
     }
 }
