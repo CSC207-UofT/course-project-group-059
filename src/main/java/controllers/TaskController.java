@@ -1,20 +1,25 @@
 package controllers;
 
-import dateAndTime.dateAndTimeAttributes.*;
-import editStrategies.*;
+import dateAndTime.dateAndTimeAttributes.DateRange;
+import dateAndTime.dateAndTimeAttributes.TimeRange;
+import editStrategies.EditTaskDateAndTime;
+import editStrategies.EditTaskStatus;
+import editStrategies.EditTaskText;
 import task.taskAttributes.*;
 import task.taskEntities.Task;
 import task.taskUseCases.TaskEditor;
 import timeline.TimelineManager;
 
-import java.time.*;
+import java.time.LocalDate;
+import java.time.LocalTime;
 
 public class TaskController {
 
     // deal with any task editing features
-    TimelineManager manager = new TimelineManager();
+    TimelineManager manager;
 
     public TaskController(TimelineManager manager) {
+        this.manager = manager;
     }
 
     // edit task
@@ -53,14 +58,6 @@ public class TaskController {
         TaskEditor.editTask(task, new EditTaskDateAndTime(newDateRange));
         manager.addToTimeLine(task);
     }
-
-    public void editDate(Task task, String newDate){
-        manager.deleteFromTimeLine(task);
-        OneDay date = new OneDay(LocalDate.parse(newDate));
-        TaskEditor.editTask(task, new EditTaskDateAndTime(date));
-        manager.addToTimeLine(task);
-    }
-
 
     public void editTime(Task task, String newStartTime, String newEndTime){
         manager.deleteFromTimeLine(task);

@@ -1,15 +1,15 @@
-import dateAndTime.dateAndTimeAttributes.*;
+import dateAndTime.dateAndTimeAttributes.DateRange;
+import dateAndTime.dateAndTimeAttributes.OneDay;
+import dateAndTime.dateAndTimeAttributes.OneTime;
+import dateAndTime.dateAndTimeAttributes.TimeRange;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import task.taskEntities.EventTask;
-import task.taskEntities.SubTask;
 import task.taskEntities.Task;
 import task.taskEntities.TodoTask;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
-
-import static org.junit.Assert.assertEquals;
 
 // Test that abstractClasses.Task in scenario walk-through is printed correctly
 public class TaskTest {
@@ -48,16 +48,6 @@ public class TaskTest {
                 "finished=false, recurring=false, allDay=false}";
 
         Assertions.assertEquals(expected, newTask.toString());
-    }
-    @Test
-    public void TestSubTask(){
-        Task newTask = new SubTask(name,priority,description);
-
-        String expected = "Task{name='Math Work', priority='N/A', description='N/A', evaluation='N/A', subTasks=null}";
-
-        Assertions.assertEquals(expected, newTask.toString());
-
-
     }
 
 }

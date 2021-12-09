@@ -1,6 +1,7 @@
 package timeline;
 
 import dateAndTime.dateAndTimeUseCase.DateAndTime;
+import printers.Printable;
 import task.taskEntities.Task;
 import task.taskUseCases.TaskObserver;
 import task.tasklistEntities.TaskList;
@@ -10,7 +11,7 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 
 
-public class TimelineManager  implements TaskObserver {
+public class TimelineManager  implements TaskObserver, Printable {
 
     private final TimelineTracker timelineTracker;
 
@@ -99,5 +100,8 @@ public class TimelineManager  implements TaskObserver {
     }
 
 
-
+    @Override
+    public String getPrint() {
+        return getTimeLine(LocalDate.now()).toString();
+    }
 }

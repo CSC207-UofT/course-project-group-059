@@ -1,10 +1,10 @@
 package timeline;
 
-import task.taskEntities.Task;
-
 import java.time.LocalDate;
-import java.time.LocalTime;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.LinkedHashMap;
+import java.util.List;
 
 public class Calender {
     private final LinkedHashMap<LocalDate, Timeline> calender;
@@ -27,10 +27,6 @@ public class Calender {
 
     public LinkedHashMap<LocalDate, Timeline> getCalender(){
         return this.calender;
-    }
-
-    public boolean isempty(){
-        return getCalender().values().size()==1 && getCalender().get(LocalDate.now()).isEmpty();
     }
 
     @Override

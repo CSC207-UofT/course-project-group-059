@@ -2,7 +2,7 @@ package dateAndTime.dateAndTimeAttributes;
 
 import task.taskEntities.Task;
 
-import java.time.*;
+import java.time.LocalTime;
 
 public abstract class Time {
     protected LocalTime startTime;

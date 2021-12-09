@@ -1,13 +1,9 @@
-
-import dateAndTime.dateAndTimeAttributes.DateRange;
 import dateAndTime.dateAndTimeAttributes.OneDay;
 import dateAndTime.dateAndTimeAttributes.OneTime;
-import dateAndTime.dateAndTimeAttributes.TimeRange;
 import editStrategies.EditTaskStatus;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import task.taskAttributes.AllDay;
-
 import task.taskEntities.Task;
 import task.taskEntities.TodoTask;
 import task.taskUseCases.TaskEditor;
@@ -17,21 +13,15 @@ import timeline.Timeline;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
-import static org.junit.Assert.assertEquals;
-
 // Test that initial storableEntities.Timeline is printed correctly
 public class CalenderAndTimelineTest {
     String name = "Math Work";
     String priority = "";
     String description = "";
-    String startDate = "2021-10-17";
-    String startTime = "14:00";
     String endDate = "2021-10-17";
     String endTime = "15:00";
 
-    DateRange dateRange = new DateRange(LocalDate.parse(startDate), LocalDate.parse(endDate));
     OneDay oneDay = new OneDay(LocalDate.parse(endDate));
-    TimeRange timeRange = new TimeRange(LocalTime.parse(startTime), LocalTime.parse(endTime));
     OneTime oneTime = new OneTime(LocalTime.parse(endTime));
 
     // Test the add, remove method in Calendar.class

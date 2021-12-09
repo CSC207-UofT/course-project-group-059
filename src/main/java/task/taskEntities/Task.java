@@ -1,10 +1,8 @@
 package task.taskEntities;
 
-import task.taskAttributes.*;
 import dateAndTime.dateAndTimeAttributes.Date;
 import dateAndTime.dateAndTimeAttributes.Time;
-
-import java.util.ArrayList;
+import task.taskAttributes.*;
 public abstract class Task{
 
     // Since there is so many attributes, I decided to implement a builder patterns,
@@ -14,8 +12,6 @@ public abstract class Task{
     protected TaskPriority priority;
     protected TaskDescription description;
     protected TaskEvaluation evaluation = new TaskEvaluation("");
-
-    protected ArrayList<Task> subTasks;
 
     protected Date date;
     protected Time time;
@@ -75,10 +71,6 @@ public abstract class Task{
         return evaluation;
     }
 
-    public ArrayList<Task> getSubTasks() {
-        return subTasks;
-    }
-
     public Date getDate() {
         return date;
     }
@@ -113,7 +105,6 @@ public abstract class Task{
                 ", priority='" + priority + '\'' +
                 ", description='" + description + '\'' +
                 ", evaluation='" + evaluation + '\'' +
-                ", subTasks=" + subTasks +
                 ", date=" + date +
                 ", time=" + time +
                 ", finished=" + finished.getBool() +

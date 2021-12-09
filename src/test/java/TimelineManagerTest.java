@@ -1,6 +1,4 @@
 import dateAndTime.dateAndTimeAttributes.DateRange;
-import dateAndTime.dateAndTimeAttributes.OneDay;
-import dateAndTime.dateAndTimeAttributes.OneTime;
 import dateAndTime.dateAndTimeAttributes.TimeRange;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -10,9 +8,6 @@ import timeline.TimelineManager;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 
 public class TimelineManagerTest {
     String name = "Math Work";
@@ -21,12 +16,10 @@ public class TimelineManagerTest {
     String startDate = "2021-12-15";
     String startTime = "14:00";
     String endDate = "2021-12-16";
-    String endTime = "15:30";
+    String endTime = "17:00";
 
     DateRange dateRange = new DateRange(LocalDate.parse(startDate), LocalDate.parse(endDate));
-    OneDay oneDay = new OneDay(LocalDate.parse(endDate));
     TimeRange timeRange = new TimeRange(LocalTime.parse(startTime), LocalTime.parse(endTime));
-    OneTime oneTime = new OneTime(LocalTime.parse(endTime));
 
 
     @Test
@@ -103,10 +96,9 @@ public class TimelineManagerTest {
                 "23:00:\t";
         String outputEndDateTasks = manager.getTimeLine(dateRange.getEndDate()).toString();
 
-//        Assertions.assertEquals(expectedStartDateTasks,outputStartDateTasks);
-//        Assertions.assertEquals(expectedEndDateTasks,outputEndDateTasks);
+        Assertions.assertEquals(expectedStartDateTasks,outputStartDateTasks);
+        Assertions.assertEquals(expectedEndDateTasks,outputEndDateTasks);
 
-        System.out.println(manager.getTimeLine(dateRange.getStartDate()).toString());
     }
 
     @Test

@@ -5,6 +5,7 @@ import dateAndTime.dateAndTimeAttributes.OneDay;
 import dateAndTime.dateAndTimeAttributes.OneTime;
 import dateAndTime.dateAndTimeAttributes.TimeRange;
 import gateways.Storable;
+import printers.Printable;
 import task.taskEntities.EventTask;
 import task.taskEntities.Task;
 import task.taskEntities.TodoTask;
@@ -12,9 +13,11 @@ import task.tasklistEntities.TaskList;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
-public class TaskTracker implements Storable {
+public class TaskTracker implements Storable, Printable {
 //Task Tracker implements Observer design pattern
     private final static List<TaskObserver> observerList = new ArrayList<>();
 
@@ -29,19 +32,6 @@ public class TaskTracker implements Storable {
 
     public TaskList getTaskList() {
         return taskList;
-    }
-
-    // deal with Observer list
-    public void addNewObservers(TaskObserver observer){
-        observerList.add(observer);
-    }
-
-    public void removeObserver(TaskObserver observer){
-        observerList.remove(observer);
-    }
-
-    public List<TaskObserver> getObserverList(){
-        return observerList;
     }
 
     private void refreshObserver(Task task){
@@ -98,5 +88,10 @@ public class TaskTracker implements Storable {
         for (Task task: load){
             addTask(task);
         }
+    }
+
+    @Override
+    public String getPrint() {
+        return taskList.toString();
     }
 }

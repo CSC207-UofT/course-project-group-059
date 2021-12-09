@@ -1,14 +1,10 @@
 package cmdUI;
 
-import alarm.alarmUseCase.Pomodoro;
 import controllers.ControllerFacade;
 import gateways.CSVManager;
-import printers.SuggestionPrinter;
-import printers.TaskListPrinter;
-import printers.TimelinePrinter;
+import printers.Printer;
 
 import java.io.File;
-import java.time.LocalDate;
 import java.util.Scanner;
 
 public class UserFunctions{
@@ -94,9 +90,6 @@ public class UserFunctions{
         else if (key.equalsIgnoreCase("2")) {
             TaskEditInUI.editTask(controllerFacade);
         }
-        else if(key.equalsIgnoreCase("3")){
-            createTaskDemo.createDemo(controllerFacade);
-        }
     }
 
     // Print either Timeline, TaskList or Suggestion list
@@ -114,13 +107,14 @@ public class UserFunctions{
 
         // Call print method in respective printer classes
         if (key.equalsIgnoreCase("1")) {
-            TimelinePrinter.print(controllerFacade.getTimelineController().getTimelineManager().getTimeLine(LocalDate.now()));
+            Printer.print(controllerFacade.getTimelineController().getTimelineManager());
         }
         else if (key.equalsIgnoreCase("2")) {
-            TaskListPrinter.print(controllerFacade.getTaskListController().getTaskTracker());
+            Printer.print(controllerFacade.getTaskListController().getTaskTracker());
         }
         else if (key.equalsIgnoreCase("3")) {
-            SuggestionPrinter.print(controllerFacade.getSuggestionController().getSuggestionByDueDate());
+
+            Printer.print(controllerFacade.getSuggestionController().getSuggestionByDueDate());
         }
     }
 
